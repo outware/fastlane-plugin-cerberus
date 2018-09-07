@@ -59,15 +59,13 @@ module Fastlane
       key: :username,
       env_name: 'FL_JIRA_USERNAME',
       description:  'Jira user',
-      optional: false,
-      default_value: ENV['CI_USER_JIRA_CREDENTIALS_USR']
+      optional: false
      ),
      FastlaneCore::ConfigItem.new(
       key: :password,
       env_name: 'FL_JIRA_PASSWORD',
       description:  'Jira user',
-      optional: false,
-      default_value: ENV['CI_USER_JIRA_CREDENTIALS_PSW']
+      optional: false
      ),
      FastlaneCore::ConfigItem.new(
       key: :host,
