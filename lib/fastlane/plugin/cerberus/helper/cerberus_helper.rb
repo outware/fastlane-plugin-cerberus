@@ -19,7 +19,7 @@ module Fastlane
           begin
             @client.Issue.jql("KEY IN (#{issues.join(',')})", fields: [:key, :summary], validate_query: false)
           rescue => e
-            UI.important('Jira Client: Failed to get issues.')
+            UI.important('Jira Client: Failed to get issue.')
             UI.important("Jira Client: Reason - #{e.message}")
             []
           end
