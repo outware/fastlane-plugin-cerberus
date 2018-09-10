@@ -64,6 +64,14 @@ module Fastlane
       def self.jira_helper(host:, username:, password:, context_path:, disable_ssl_verification:)
         return JiraHelper.new(host, username, password, context_path, disable_ssl_verification)
       end
+
+      def self.changelog(from:, to:, pretty:, merge_commit_filtering:)
+        other_action.changelog_from_git_commits(
+          between: [from, to], 
+          pretty: pretty,
+          merge_commit_filtering: merge_commit_filtering
+        )
+      end
     end
   end
 end

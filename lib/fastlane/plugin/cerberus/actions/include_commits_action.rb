@@ -75,8 +75,9 @@ module Fastlane
      return nil
     end
 
-    other_action.changelog_from_git_commits(
-     between: [from, to],
+    Helper::CerberusHelper.changelog(
+     from: from,
+     to: to,
      pretty: pretty,
      merge_commit_filtering: :exclude_merges.to_s
     )
