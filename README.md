@@ -18,7 +18,8 @@ Cerberus is a fastlane plugin containing multiple actions for extracting Jira is
 
 ### [GitTickets](lib/fastlane/plugin/cerberus/actions/git_tickets_action.rb)
 
-This action will extract tickets with the provided regex. By default the format for which tickets are extracted is any number of capital letters seperated by `-` followed by any amount of numbers e.g `XYX-123`.
+This action will extract tickets using a provided regular expression. The default format is as follows:
+`ABC-123`, one or more capital letters, followed by a dash, followed by one or more digits.
 
 ##### Parameters
 
