@@ -25,8 +25,8 @@ This action will extract tickets using a provided regular expression. The defaul
 
 | Parameter         | Environment Name              | Optional  | Default Value                                         | Description                                                                                               |
 |---------------    |------------------------------ |---------- |----------------------------------------------------   |-------------------------------------------------------------------------------------------------------    |
-| from              | FL_GIT_TICKETS_FROM           | No        | `'HEAD'`                                              | The commit SHA                                                                                            |
-| to                | FL_GIT_TICKETS_TO             | No        | `ENV[GIT_PREVIOUS_SUCCESSFUL_COMMIT]` or `'HEAD'`     | The commit SHA                                                                                            |
+| from              | FL_GIT_TICKETS_FROM           | No        | `'HEAD'`                                              | The commit SHA of the first commit to parse for ticket information.                                       |
+| to                | FL_GIT_TICKETS_TO             | No        | `ENV[GIT_PREVIOUS_SUCCESSFUL_COMMIT]` or `'HEAD'`     | The commit SHA of the last commit to parse for ticket information.                                        |
 | regex             | FL_GIT_TICKETS_REGEX          | No        | `'([A-Z]+-\d+)'`                                      | Regex which will be used to extract the tickets from the commit messages.                                 |
 | exclude_regex     | FL_GIT_TICKETS_EXCLUDE_REGEX  | Yes       | `nil`                                                 | Additional regex to ignore specific commits or keywords.                                                  |
 | pretty            | FL_GIT_TICKETS_PRETTY_FORMAT  | No        | `'* (%h) %s'`                                         | The git pretty format to be used to fetch the git commit messages on which the regex will be applied.     |
@@ -147,7 +147,7 @@ jira_comment(
  build_number: '1',
  build_url: 'https://www.jenkins.com/build/1',
  app_version: '1.0-QA',
- hockey_url: 'https://rink.hockeyapp.net/apps/32c5df727eac4254be9f101c6a61dc26',
+ hockey_url: 'https://rink.hockeyapp.net/apps/32c5df727eac426',
  username: 'jenkins',
  password: 'XYZ123',
  host: 'https://jira.com',
@@ -164,7 +164,7 @@ FL_JIRA_COMMENT_ISSUES=['CER-1', 'CER-2']
 FL_JIRA_COMMENT_BUILD_NUMBER='1'
 FL_JIRA_COMMENT_BUILD_URL='https://www.jenkins.com/build/1'
 FL_JIRA_COMMENT_APP_VERSION='1.0-QA'
-FL_JIRA_COMMENT_HOCKEY_URL='https://rink.hockeyapp.net/apps/32c5df727eac4254be9f101c6a61dc26'
+FL_JIRA_COMMENT_HOCKEY_URL='https://rink.hockeyapp.net/apps/32c5df727eac426'
 FL_JIRA_USERNAME='jenkins'
 FL_JIRA_PASSWORD='XYZ123'
 FL_JIRA_HOST='https://jira.com'
@@ -234,7 +234,7 @@ FL_JIRA_COMMENT_ISSUES=['CER-1', 'CER-2']
 FL_JIRA_COMMENT_BUILD_NUMBER='1'
 FL_JIRA_COMMENT_BUILD_URL='https://www.jenkins.com/build/1'
 FL_JIRA_COMMENT_APP_VERSION='1.0-QA'
-FL_JIRA_COMMENT_HOCKEY_URL='https://rink.hockeyapp.net/apps/32c5df727eac61dc26'
+FL_JIRA_COMMENT_HOCKEY_URL='https://rink.hockeyapp.net/apps/32c5df727eac426'
 FL_JIRA_USERNAME='jenkins'
 FL_JIRA_PASSWORD='XYZ123'
 FL_JIRA_HOST='https://jira.com'
