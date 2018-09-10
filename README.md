@@ -29,7 +29,7 @@ This action will extract tickets using a provided regular expression. The defaul
 | to                | FL_GIT_TICKETS_TO             | No        | `ENV[GIT_PREVIOUS_SUCCESSFUL_COMMIT]` or `'HEAD'`     | The commit SHA of the last commit to parse for ticket information.                                        |
 | regex             | FL_GIT_TICKETS_REGEX          | No        | `'([A-Z]+-\d+)'`                                      | Regex which will be used to extract the tickets from the commit messages.                                 |
 | exclude_regex     | FL_GIT_TICKETS_EXCLUDE_REGEX  | Yes       | `nil`                                                 | Additional regex to ignore specific commits or keywords.                                                  |
-| pretty            | FL_GIT_TICKETS_PRETTY_FORMAT  | No        | `'* (%h) %s'`                                         | The git pretty format to be used to fetch the git commit messages on which the regex will be applied.     |
+| pretty            | FL_GIT_TICKETS_PRETTY_FORMAT  | No        | `'* (%h) %s'`                                         | [A git log pretty format.](https://git-scm.com/docs/git-log#_pretty_formats)                              |
 
 ##### Usage
 
@@ -77,10 +77,10 @@ Extracts the commit messages from a set of commits using regex.
 
 | Parameter     | Environment Name                  | Optional  | Default Value                             | Description                                                                                               |
 |-----------    |---------------------------------- |---------- |---------------------------------------    |-------------------------------------------------------------------------------------------------------    |
-| from          | FL_INCLUDE_COMMITS_FROM           | No        | `ENV['FL_GIT_TICKETS_FROM']`              | The commit SHA                                                                                            |
-| to            | FL_INCLUDE_COMMITS_TO             | No        | `ENV['FL_GIT_TICKETS_TO']`                | The commit SHA                                                                                            |
+| from          | FL_INCLUDE_COMMITS_FROM           | No        | `ENV['FL_GIT_TICKETS_FROM']`              | The commit SHA of the first commit to parse for ticket information.                                       |
+| to            | FL_INCLUDE_COMMITS_TO             | No        | `ENV['FL_GIT_TICKETS_TO']`                | The commit SHA of the last commit to parse for ticket information.                                        |
 | regex         | FL_INCLUDE_COMMITS_REGEX          | No        | `ENV['FL_GIT_TICKETS_INCLUDE_REGEX']`     | Regex which will be used to extract the tickets from the commit messages.                                 |
-| pretty        | FL_INCLUDE_COMMITS_PRETTY_FORMAT  | No        | `ENV['FL_GIT_TICKETS_PRETTY_FORMAT']`     | The git pretty format to be used to fetch the git commit messages on which the regex will be applied.     |
+| pretty        | FL_INCLUDE_COMMITS_PRETTY_FORMAT  | No        | `ENV['FL_GIT_TICKETS_PRETTY_FORMAT']`     | [A git log pretty format.](https://git-scm.com/docs/git-log#_pretty_formats)                              |
 
 ##### Usage
 
