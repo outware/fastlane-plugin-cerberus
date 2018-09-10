@@ -63,7 +63,7 @@ FL_GIT_TICKETS_PRETTY_FORMAT='* (%h) %s'
 git_tickets
 ```
 
-##### Output
+##### Result
 
 Returns an Array of Strings. e.g `["CER-1", "CER-2"]`
 
@@ -111,7 +111,7 @@ FL_INCLUDE_COMMITS_PRETTY_FORMAT='%s'
 include_commits
 ```
 
-##### Output
+##### Result
 
 Returns an Array of Strings. e.g `["[TECH] - Update SSL pinning"]`
 
@@ -177,9 +177,15 @@ FL_JIRA_DISABLE_SSL_VERIFICATION=false
 jira_comment
 ```
 
-##### Output
+##### Result
 
-nil
+Adds a comment on all the issues provided which have an accociated Jira issue in the following format:
+
+```
+Jenkins: [Build ##{build_number}|#{build_url}]
+
+HockeyApp: [Version #{app_version} (#{build_number})|#{hockey_url}]
+```
 
 ---
 
@@ -241,9 +247,9 @@ FL_JIRA_DISABLE_SSL_VERIFICATION=false
 jira_comment
 ```
 
-##### Output
+##### Result
 
-A String containing all the changes and additional messages in the following `markdown` format:
+Returns a String containing all the changes and additional messages in the following `markdown` format:
 ```
 ### Changelog
 
