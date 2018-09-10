@@ -12,7 +12,8 @@ fastlane add_plugin cerberus
 
 ## About
 
-Cerberus is a fastlane plugin containing various actions ranging from extracting Jira issues from commit messages to commenting on Jira issues with build numbers. It also contains an action for generating release notes.
+Cerberus is a fastlane plugin for extracting Jira issues from commit messages and sharing information on its respective Jenkins job and HockeyApp upload.
+It can generate release notes for use by HockeyApp, and produce Jira comments with Jenkins build and HockeyApp artefact information.
 
 ## Actions
 
