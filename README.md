@@ -22,14 +22,13 @@ This action will extract tickets with the provided regex. By default the format 
 
 ##### Parameters
 
-| Parameter         | Environment Name              | Optional  | Default Value                     | Description                                                                                               |
-|---------------    |------------------------------ |---------- |---------------------------------  |-------------------------------------------------------------------------------------------------------    |
-| from              | FL_GIT_TICKETS_FROM           | false     | `HEAD`                            | The commit SHA                                                                                            |
-| to                | FL_GIT_TICKETS_TO             | false     | `GIT_PREVIOUS_SUCCESSFUL_COMMIT`  |                                                                                                           |
-| regex             | FL_GIT_TICKETS_REGEX          | false     | `([A-Z]+-\d+)`                    | Regex which will be used to extract the tickets from the commit messages.                                 |
-| exclude_regex     | FL_GIT_TICKETS_EXCLUDE_REGEX  | true      | nil                               | Additional regex to ignore specific commits or keywords.                                                  |
-| pretty            | FL_GIT_TICKETS_PRETTY_FORMAT  | false     | `* (%h) %s`                       | The git pretty format to be used to fetch the git commit messages on which the regex will be applied.     |
-
+| Parameter         | Environment Name              | Optional  | Default Value                                     | Description                                                                                               |
+|---------------    |------------------------------ |---------- |-------------------------------------------------  |-------------------------------------------------------------------------------------------------------    |
+| from              | FL_GIT_TICKETS_FROM           | false     | `'HEAD'`                                          | The commit SHA                                                                                            |
+| to                | FL_GIT_TICKETS_TO             | false     | `ENV[GIT_PREVIOUS_SUCCESSFUL_COMMIT] || 'HEAD'`   | The commit SHA                                                                                            |
+| regex             | FL_GIT_TICKETS_REGEX          | false     | `'([A-Z]+-\d+)'`                                  | Regex which will be used to extract the tickets from the commit messages.                                 |
+| exclude_regex     | FL_GIT_TICKETS_EXCLUDE_REGEX  | true      | nil                                               | Additional regex to ignore specific commits or keywords.                                                  |
+| pretty            | FL_GIT_TICKETS_PRETTY_FORMAT  | false     | `'* (%h) %s'`                                     | The git pretty format to be used to fetch the git commit messages on which the regex will be applied.     |
 
 ##### Usage
 
