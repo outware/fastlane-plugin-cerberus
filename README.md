@@ -211,7 +211,7 @@ jira_comment(
  build_number: '1',
  build_url: 'https://www.jenkins.com/build/1',
  app_version: '1.0-QA',
- hockey_url: 'https://rink.hockeyapp.net/apps/32c5df727eac4254be9f101c6a61dc26',
+ hockey_url: 'https://rink.hockeyapp.net/apps/32c5df727eac426',
  username: 'jenkins',
  password: 'XYZ123',
  host: 'https://jira.com',
@@ -228,7 +228,7 @@ FL_JIRA_COMMENT_ISSUES=['CER-1', 'CER-2']
 FL_JIRA_COMMENT_BUILD_NUMBER='1'
 FL_JIRA_COMMENT_BUILD_URL='https://www.jenkins.com/build/1'
 FL_JIRA_COMMENT_APP_VERSION='1.0-QA'
-FL_JIRA_COMMENT_HOCKEY_URL='https://rink.hockeyapp.net/apps/32c5df727eac4254be9f101c6a61dc26'
+FL_JIRA_COMMENT_HOCKEY_URL='https://rink.hockeyapp.net/apps/32c5df727eac61dc26'
 FL_JIRA_USERNAME='jenkins'
 FL_JIRA_PASSWORD='XYZ123'
 FL_JIRA_HOST='https://jira.com'
