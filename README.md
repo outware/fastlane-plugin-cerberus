@@ -34,7 +34,6 @@ This action will extract tickets using a provided regular expression. The defaul
 
 #### Usage
 
-`fastfile`:
 ```ruby
 git_tickets(
  from: 'HEAD',
@@ -66,7 +65,6 @@ Extracts the commit messages from a set of commits using regex.
 
 #### Usage
 
-`fastfile`:
 ```ruby
 include_commits(
  from: 'HEAD',
@@ -103,7 +101,6 @@ Adds a comment on the Jira isses with the CI build number and the link to the CI
 
 #### Usage
 
-`fastfile`:
 ```ruby
 jira_comment(
  issues: ['CER-1', 'CER-2'],
@@ -150,7 +147,6 @@ Generates a changelog containing all the completed issues and any additional mes
 
 #### Usage
 
-`fastfile`:
 ```ruby
 jira_comment(
  issues: ['CER-1', 'CER-2'],
