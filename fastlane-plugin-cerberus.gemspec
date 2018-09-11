@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = 'harry.singh@outware.com.au'
 
   spec.summary       = 'a'
-  # spec.homepage      = "https://github.com/<GITHUB_USERNAME>/fastlane-plugin-cerberus"
+  spec.homepage      = "https://github.com/outware/fastlane-plugin-cerberus"
   spec.license       = "MIT"
 
   spec.files         = Dir["lib/**/*"] + %w(README.md LICENSE)
@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
   # since this would cause a circular dependency
 
   # spec.add_dependency 'your-dependency', '~> 1.0.0'
+  spec.add_runtime_dependency('jira-ruby', '~> 1.0')
 
   spec.add_development_dependency('pry')
   spec.add_development_dependency('bundler')
@@ -32,5 +33,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency('rubocop-require_tools')
   spec.add_development_dependency('simplecov')
   spec.add_development_dependency('fastlane', '>= 2.99.0')
-  spec.add_runtime_dependency 'jira-ruby', '~> 1.0'
 end
