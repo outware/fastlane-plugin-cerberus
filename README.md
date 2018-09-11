@@ -22,7 +22,7 @@ It can generate release notes for use by HockeyApp, and produce Jira comments wi
 This action will extract tickets using a provided regular expression. The default format is as follows:
 `ABC-123`, one or more capital letters, followed by a dash, followed by one or more digits.
 
-##### Parameters
+#### Parameters
 
 | Parameter         | Environment Name              | Optional  | Default Value                                         | Description                                                                                               |
 |---------------    |------------------------------ |---------- |----------------------------------------------------   |-------------------------------------------------------------------------------------------------------    |
@@ -32,9 +32,7 @@ This action will extract tickets using a provided regular expression. The defaul
 | exclude_regex     | FL_GIT_TICKETS_EXCLUDE_REGEX  | Yes       | `nil`                                                 | Additional regex to ignore specific commits or keywords.                                                  |
 | pretty            | FL_GIT_TICKETS_PRETTY_FORMAT  | No        | `'* (%h) %s'`                                         | [A git log pretty format.](https://git-scm.com/docs/git-log#_pretty_formats)                              |
 
-##### Usage
-
-###### Parameters
+#### Usage
 
 `fastfile`:
 ```ruby
@@ -47,24 +45,7 @@ git_tickets(
 )
 ```
 
-###### Environment Names
-
-
-`.env`:
-```ruby
-FL_GIT_TICKETS_FROM='HEAD'
-FL_GIT_TICKETS_TO='81fae0ffcc714fb56a1c186ae7c73c80442fff74'
-FL_GIT_TICKETS_REGEX='([A-Z]+-\d+)'
-FL_GIT_TICKETS_EXCLUDE_REGEX='TECH'
-FL_GIT_TICKETS_PRETTY_FORMAT='* (%h) %s'
-```
-
-`fastfile`:
-```ruby
-git_tickets
-```
-
-##### Result
+#### Result
 
 Returns an Array of Strings. e.g `["CER-1", "CER-2"]`
 
@@ -74,7 +55,7 @@ Returns an Array of Strings. e.g `["CER-1", "CER-2"]`
 
 Extracts the commit messages from a set of commits using regex.
 
-##### Parameters
+#### Parameters
 
 | Parameter     | Environment Name                  | Optional  | Default Value                             | Description                                                                                               |
 |-----------    |---------------------------------- |---------- |---------------------------------------    |-------------------------------------------------------------------------------------------------------    |
@@ -83,9 +64,7 @@ Extracts the commit messages from a set of commits using regex.
 | regex         | FL_INCLUDE_COMMITS_REGEX          | No        | `ENV['FL_GIT_TICKETS_INCLUDE_REGEX']`     | Regex which will be used to extract the tickets from the commit messages.                                 |
 | pretty        | FL_INCLUDE_COMMITS_PRETTY_FORMAT  | No        | `ENV['FL_GIT_TICKETS_PRETTY_FORMAT']`     | [A git log pretty format.](https://git-scm.com/docs/git-log#_pretty_formats)                              |
 
-##### Usage
-
-###### Parameters
+#### Usage
 
 `fastfile`:
 ```ruby
@@ -97,22 +76,7 @@ include_commits(
 )
 ```
 
-###### Environment Names
-
-`.env`:
-```ruby
-FL_INCLUDE_COMMITS_FROM='HEAD'
-FL_INCLUDE_COMMITS_TO='81fae0ffcc714fb56a1c186ae7c73c80442fff74'
-FL_INCLUDE_COMMITS_REGEX='TECH'
-FL_INCLUDE_COMMITS_PRETTY_FORMAT='%s'
-```
-
-`fastfile`:
-```ruby
-include_commits
-```
-
-##### Result
+#### Result
 
 Returns an Array of Strings. e.g `["[TECH] - Update SSL pinning"]`
 
@@ -122,7 +86,7 @@ Returns an Array of Strings. e.g `["[TECH] - Update SSL pinning"]`
 
 Adds a comment on the Jira isses with the CI build number and the link to the CI build it also adds a link to the HockeyApp build and its build number.
 
-##### Parameters
+#### Parameters
 
 | Parameter                 | Environment Name                  | Optional  | Default Value                                                 | Description                                           |
 |-------------------------- |---------------------------------- |---------- |------------------------------------------------------------   |-----------------------------------------------------  |
@@ -137,9 +101,7 @@ Adds a comment on the Jira isses with the CI build number and the link to the CI
 | context_path              | FL_JIRA_CONTEXT_PATH              | No        | `''`                                                          | Jira context path.                                    |
 | disable_ssl_verification  | FL_JIRA_DISABLE_SSL_VERIFICATION  | No        | `false`                                                       | Disable Jira SSL verification.                        |
 
-##### Usage
-
-###### Parameters
+#### Usage
 
 `fastfile`:
 ```ruby
@@ -157,28 +119,7 @@ jira_comment(
 )
 ```
 
-###### Environment Names
-
-`.env`:
-```ruby
-FL_JIRA_COMMENT_ISSUES=['CER-1', 'CER-2']
-FL_JIRA_COMMENT_BUILD_NUMBER='1'
-FL_JIRA_COMMENT_BUILD_URL='https://www.jenkins.com/build/1'
-FL_JIRA_COMMENT_APP_VERSION='1.0-QA'
-FL_JIRA_COMMENT_HOCKEY_URL='https://rink.hockeyapp.net/apps/32c5df727eac426'
-FL_JIRA_USERNAME='jenkins'
-FL_JIRA_PASSWORD='XYZ123'
-FL_JIRA_HOST='https://jira.com'
-FL_JIRA_CONTEXT_PATH=''
-FL_JIRA_DISABLE_SSL_VERIFICATION=false
-```
-
-`fastfile`:
-```ruby
-jira_comment
-```
-
-##### Result
+#### Result
 
 Adds a comment on all the issues provided which have an accociated Jira issue in the following format:
 
@@ -194,7 +135,7 @@ HockeyApp: [Version #{app_version} (#{build_number})|#{hockey_url}]
 
 Generates a changelog containing all the completed issues and any additional messages to be included as part of the changelog. It sets the `FL_CHANGELOG` shared value with the changelog.
 
-##### Parameters
+#### Parameters
 
 | Parameter                 | Environment Name                      | Optional  | Default Value         | Description                                                               |
 |-------------------------- |-----------------------------------    |---------- |--------------------   |-------------------------------------------------------------------------  |
@@ -207,9 +148,7 @@ Generates a changelog containing all the completed issues and any additional mes
 | context_path              | FL_JIRA_CONTEXT_PATH                  | No        | `''`                  | Jira context path.                                                        |
 | disable_ssl_verification  | FL_JIRA_DISABLE_SSL_VERIFICATION      | No        | `false`               | Disable Jira SSL verification.                                            |
 
-##### Usage
-
-###### Parameters
+#### Usage
 
 `fastfile`:
 ```ruby
@@ -227,28 +166,7 @@ jira_comment(
 )
 ```
 
-###### Environment Names
-
-`.env`:
-```ruby
-FL_JIRA_COMMENT_ISSUES=['CER-1', 'CER-2']
-FL_JIRA_COMMENT_BUILD_NUMBER='1'
-FL_JIRA_COMMENT_BUILD_URL='https://www.jenkins.com/build/1'
-FL_JIRA_COMMENT_APP_VERSION='1.0-QA'
-FL_JIRA_COMMENT_HOCKEY_URL='https://rink.hockeyapp.net/apps/32c5df727eac426'
-FL_JIRA_USERNAME='jenkins'
-FL_JIRA_PASSWORD='XYZ123'
-FL_JIRA_HOST='https://jira.com'
-FL_JIRA_CONTEXT_PATH=''
-FL_JIRA_DISABLE_SSL_VERIFICATION=false
-```
-
-`fastfile`:
-```ruby
-jira_comment
-```
-
-##### Result
+#### Result
 
 Returns a String containing all the changes and additional messages in the following `markdown` format:
 ```
