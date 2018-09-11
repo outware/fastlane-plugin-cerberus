@@ -1,3 +1,46 @@
 lane :test do
-  cerberus
+  from = 'HEAD'
+  to = '81fae0ffcc714fb56a1c186ae7c73c80442fff74'
+  jira_host = 'https://jira.com'
+  jira_username = 'jenkins'
+  jira_password = 'XYZ123'
+  build_number = '1'
+  build_url = 'https://www.jenkins.com/build/1'
+  hockey_url = 'https://rink.hockeyapp.net/apps/32c5df727eac426'
+  app_version = '1.0'
+
+  # Extract the issues from the commit history
+  issues = git_tickets(
+    from: from,
+    to: to
+  )
+
+  # Additional commits to include in the release notes
+  include_commits = include_commits(
+    from: from,
+    to: to,
+    regex: 'TECH'
+  )
+
+  # Generate release notes
+  release_notes = release_notes(
+    issues: issues,
+    include_commits: include_commits,
+    build_url: build_url,
+    username: jira_username,
+    password: jira_password,
+    host: jira_host
+  )
+
+  # Comment on Jira issues found in the commit history
+  jira_comment(
+    issues: issues,
+    build_number: build_number,
+    build_url: build_url,
+    app_version: app_version,
+    hockey_url: hockey_url,
+    username: jira_username,
+    password: jira_password,
+    host: jira_host
+  )
 end
