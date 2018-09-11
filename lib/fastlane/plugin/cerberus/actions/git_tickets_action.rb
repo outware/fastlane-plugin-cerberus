@@ -64,6 +64,10 @@ module Fastlane
         platform == :ios
       end
 
+      def self.output
+        [String]
+      end
+
       def self.available_options
         [
           FastlaneCore::ConfigItem.new(
