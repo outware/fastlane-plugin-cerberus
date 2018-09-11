@@ -148,12 +148,10 @@ Generates a changelog containing all the completed issues and any additional mes
 #### Usage
 
 ```ruby
-jira_comment(
+release_notes(
  issues: ['CER-1', 'CER-2'],
- build_number: '1',
+ include_commits: ["[TECH] - Add SSL"],
  build_url: 'https://www.jenkins.com/build/1',
- app_version: '1.0-QA',
- hockey_url: 'https://rink.hockeyapp.net/apps/32c5df727eac426',
  username: 'jenkins',
  password: 'XYZ123',
  host: 'https://jira.com',
