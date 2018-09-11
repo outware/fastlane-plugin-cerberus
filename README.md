@@ -17,7 +17,7 @@ It can generate release notes for use by HockeyApp, and produce Jira comments wi
 
 ## Actions
 
-### [GitTickets](lib/fastlane/plugin/cerberus/actions/git_tickets_action.rb)
+### [git_tickets](lib/fastlane/plugin/cerberus/actions/git_tickets_action.rb)
 
 This action will extract tickets using a provided regular expression. The default format is as follows:
 `ABC-123`, one or more capital letters, followed by a dash, followed by one or more digits.
@@ -50,7 +50,7 @@ Returns an Array of Strings. e.g `["CER-1", "CER-2"]`
 
 ---
 
-### [IncludeCommits](lib/fastlane/plugin/cerberus/actions/include_commits_action.rb)
+### [include_commits](lib/fastlane/plugin/cerberus/actions/include_commits_action.rb)
 
 Extracts the commit messages from a set of commits using regex.
 
@@ -80,7 +80,7 @@ Returns an Array of Strings. e.g `["[TECH] - Update SSL pinning"]`
 
 ---
 
-### [JiraComment](lib/fastlane/plugin/cerberus/actions/jira_comment_action.rb)
+### [jira_comment](lib/fastlane/plugin/cerberus/actions/jira_comment_action.rb)
 
 Adds a comment on the Jira isses with the CI build number and the link to the CI build it also adds a link to the HockeyApp build and its build number.
 
@@ -128,7 +128,7 @@ HockeyApp: [Version #{app_version} (#{build_number})|#{hockey_url}]
 
 ---
 
-### [ReleaseNotes](lib/fastlane/plugin/cerberus/actions/release_notes_action.rb)
+### [release_notes](lib/fastlane/plugin/cerberus/actions/release_notes_action.rb)
 
 Generates a changelog containing all the completed issues and any additional messages to be included as part of the changelog. It sets the `FL_CHANGELOG` shared value with the changelog.
 
