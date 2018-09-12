@@ -20,9 +20,9 @@ describe Fastlane::Actions::GitTicketsAction do
           ].join("\n")
         )
 
-      tickets = execute_lane(body: 'git_tickets')
+      result = execute_lane(body: 'git_tickets')
 
-      expect(tickets).to eq(['XYZ-312', 'ZXY-5233', 'CAB-51'])
+      expect(result).to eq(['XYZ-312', 'ZXY-5233', 'CAB-51'])
     end
 
     describe 'exclude_regex' do
