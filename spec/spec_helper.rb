@@ -22,3 +22,18 @@ def execute_lane(body:)
     "
   ).runner.execute(:test)
 end
+
+class StubJiraHelper < FastlaneCore::Helper::CerberusHelper::JiraHelper
+  def initialize
+  end
+
+  def get(issues:)
+    issues.map do |issue|
+      { 'key': issue, summary: "Summary for: #{issues}" }
+    end
+  end
+
+  def add_comment(comment:, issues:)
+    comment
+  end
+end
