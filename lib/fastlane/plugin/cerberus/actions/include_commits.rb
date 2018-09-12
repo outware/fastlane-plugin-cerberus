@@ -5,15 +5,14 @@ module Fastlane
         regex = Regexp.new(params[:regex])
         changelog = log(from: params[:from], to: params[:to], pretty: params[:pretty])
 
-        if !changelog.to_s.empty?
-          tickets = tickets(log: changelog, regex: regex)
-          UI.important("Additional Issues: #{tickets.join("\n")}")
-
-          return tickets
-        else
+        if changelog.to_s.empty?
           UI.important('No issues found.')
           return []
         end
+
+        tickets = tickets(log: changelog, regex: regex)
+        UI.important("Additional Issues: #{tickets.join("\n")}")
+        return tickets
       end
 
       #####################################################
