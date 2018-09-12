@@ -29,7 +29,7 @@ class StubJiraHelper < FastlaneCore::Helper::CerberusHelper::JiraHelper
 
   def get(issues:)
     issues.map do |issue|
-      { 'key': issue, summary: "Summary for: #{issues}" }
+      { 'key': issue, summary: "Summary for: #{issue}" }
     end
   end
 
