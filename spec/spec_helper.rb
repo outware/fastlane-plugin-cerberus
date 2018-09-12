@@ -13,3 +13,12 @@ require 'fastlane' # to import the Action super class
 require 'fastlane/plugin/cerberus' # import the actual plugin
 
 Fastlane.load_actions # load other actions (in case your plugin calls other actions or shared values)
+
+def execute_lane(body:)
+  Fastlane::FastFile.new.parse(
+    "lane :test do
+      #{body}
+     end
+    "
+  ).runner.execute(:test)
+end
