@@ -22,7 +22,7 @@ module Fastlane
       end
 
       class JiraHelper
-        def initialize(host, username, password, context_path, disable_ssl_verification, jira_client_helper)
+        def initialize(host, username, password, context_path, disable_ssl_verification, jira_client_helper = nil)
           @host = host
           @context_path = context_path
 
