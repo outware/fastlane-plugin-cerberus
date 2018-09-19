@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.author        = 'Harry Singh'
   spec.email         = 'harry.singh@outware.com.au'
 
-  spec.summary       = 'a'
+  spec.summary       = 'Cerberus is a fastlane plugin for extracting Jira issues from commit messages and sharing information on its respective Jenkins job and HockeyApp upload.'
   spec.homepage      = "https://github.com/outware/fastlane-plugin-cerberus"
   spec.license       = "MIT"
 
