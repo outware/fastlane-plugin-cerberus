@@ -24,13 +24,13 @@ This action will extract tickets using a provided regular expression. The defaul
 
 #### Parameters
 
-| Parameter         | Environment Name              | Optional  | Default Value                                         | Description                                                                                               |
-|---------------    |------------------------------ |---------- |----------------------------------------------------   |-------------------------------------------------------------------------------------------------------    |
-| from              | FL_GIT_TICKETS_FROM           | No        | `'HEAD'`                                              | The commit SHA of the first commit to parse for ticket information.                                       |
-| to                | FL_GIT_TICKETS_TO             | No        | `ENV[GIT_PREVIOUS_SUCCESSFUL_COMMIT]` or `'HEAD'`     | The commit SHA of the last commit to parse for ticket information.                                        |
-| regex             | FL_GIT_TICKETS_REGEX          | No        | `'([A-Z]+-\d+)'`                                      | Regex which will be used to extract the tickets from the commit messages.                                 |
-| exclude_regex     | FL_GIT_TICKETS_EXCLUDE_REGEX  | Yes       | `nil`                                                 | Additional regex to ignore specific commits or keywords.                                                  |
-| pretty            | FL_GIT_TICKETS_PRETTY_FORMAT  | No        | `'* (%h) %s'`                                         | [A git log pretty format.](https://git-scm.com/docs/git-log#_pretty_formats)                              |
+| Parameter         | Environment Name              | Default Value                                         | Description                                                                   |
+|---------------    |------------------------------ |---------------------------------------------------    |------------------------------------------------------------------------------ |
+| from              | FL_GIT_TICKETS_FROM           | `'HEAD'`                                              | The commit SHA of the first commit to parse for ticket information.           |
+| to                | FL_GIT_TICKETS_TO             | `ENV[GIT_PREVIOUS_SUCCESSFUL_COMMIT]` or `'HEAD'`     | The commit SHA of the last commit to parse for ticket information.            |
+| regex             | FL_GIT_TICKETS_REGEX          | `'([A-Z]+-\d+)'`                                      | Regex which will be used to extract the tickets from the commit messages.     |
+| exclude_regex     | FL_GIT_TICKETS_EXCLUDE_REGEX  |                                                       | Additional regex to ignore specific commits or keywords.                      |
+| pretty            | FL_GIT_TICKETS_PRETTY_FORMAT  | `'* (%h) %s'`                                         | [A git log pretty format.](https://git-scm.com/docs/git-log#_pretty_formats)  |
 
 #### Usage
 
@@ -56,12 +56,12 @@ Extracts the commit messages from a set of commits using regex.
 
 #### Parameters
 
-| Parameter     | Environment Name                  | Optional  | Default Value                             | Description                                                                                               |
-|-----------    |---------------------------------- |---------- |---------------------------------------    |-------------------------------------------------------------------------------------------------------    |
-| from          | FL_INCLUDE_COMMITS_FROM           | No        | `ENV['FL_GIT_TICKETS_FROM']`              | The commit SHA of the first commit to parse for ticket information.                                       |
-| to            | FL_INCLUDE_COMMITS_TO             | No        | `ENV['FL_GIT_TICKETS_TO']`                | The commit SHA of the last commit to parse for ticket information.                                        |
-| regex         | FL_INCLUDE_COMMITS_REGEX          | No        | `ENV['FL_GIT_TICKETS_INCLUDE_REGEX']`     | Regex which will be used to extract the tickets from the commit messages.                                 |
-| pretty        | FL_INCLUDE_COMMITS_PRETTY_FORMAT  | No        | `ENV['FL_GIT_TICKETS_PRETTY_FORMAT']`     | [A git log pretty format.](https://git-scm.com/docs/git-log#_pretty_formats)                              |
+| Parameter     | Environment Name                  | Default Value                             | Description                                                                   |
+|-----------    |---------------------------------- |---------------------------------------    |------------------------------------------------------------------------------ |
+| from          | FL_INCLUDE_COMMITS_FROM           | `ENV['FL_GIT_TICKETS_FROM']`              | The commit SHA of the first commit to parse for ticket information.           |
+| to            | FL_INCLUDE_COMMITS_TO             | `ENV['FL_GIT_TICKETS_TO']`                | The commit SHA of the last commit to parse for ticket information.            |
+| regex         | FL_INCLUDE_COMMITS_REGEX          | `ENV['FL_GIT_TICKETS_INCLUDE_REGEX']`     | Regex which will be used to extract the tickets from the commit messages.     |
+| pretty        | FL_INCLUDE_COMMITS_PRETTY_FORMAT  | `ENV['FL_GIT_TICKETS_PRETTY_FORMAT']`     | [A git log pretty format.](https://git-scm.com/docs/git-log#_pretty_formats)  |
 
 #### Usage
 
@@ -86,18 +86,18 @@ Adds a comment on the Jira isses with the CI build number and the link to the CI
 
 #### Parameters
 
-| Parameter                 | Environment Name                  | Optional  | Default Value                                                 | Description                                           |
-|-------------------------- |---------------------------------- |---------- |------------------------------------------------------------   |-----------------------------------------------------  |
-| issues                    | FL_JIRA_COMMENT_ISSUES            | No        | `[]`                                                          | The Jira issues to comment on. An Array of Strings.   |
-| build_number              | FL_JIRA_COMMENT_BUILD_NUMBER      | No        | `ENV['BUILD_NUMBER']`                                         | The CI build number that built the current changes.   |
-| build_url                 | FL_JIRA_COMMENT_BUILD_URL         | No        | `ENV['BUILD_URL']`                                            | URL to the CI build.                                  |
-| app_version               | FL_JIRA_COMMENT_APP_VERSION       | No        | `nil`                                                         | The current app version.                              |
-| hockey_url                | FL_JIRA_COMMENT_HOCKEY_URL        | No        | `Actions.lane_context[SharedValues::HOCKEY_DOWNLOAD_LINK]`    | URL to the HockeyApp build.                           |
-| username                  | FL_JIRA_USERNAME                  | No        | `nil`                                                         | Jira username.                                        |
-| password                  | FL_JIRA_PASSWORD                  | No        | `nil`                                                         | Jira password.                                        |
-| host                      | FL_JIRA_HOST                      | No        | `nil`                                                         | Jira host location.                                   |
-| context_path              | FL_JIRA_CONTEXT_PATH              | No        | `''`                                                          | Jira context path.                                    |
-| disable_ssl_verification  | FL_JIRA_DISABLE_SSL_VERIFICATION  | No        | `false`                                                       | Disable Jira SSL verification.                        |
+| Parameter                 | Environment Name                  | Default Value                                                 | Description                                           |
+|-------------------------- |---------------------------------- |------------------------------------------------------------   |-----------------------------------------------------  |
+| issues                    | FL_JIRA_COMMENT_ISSUES            | `[]`                                                          | The Jira issues to comment on. An Array of Strings.   |
+| build_number              | FL_JIRA_COMMENT_BUILD_NUMBER      | `ENV['BUILD_NUMBER']`                                         | The CI build number that built the current changes.   |
+| build_url                 | FL_JIRA_COMMENT_BUILD_URL         | `ENV['BUILD_URL']`                                            | URL to the CI build.                                  |
+| app_version               | FL_JIRA_COMMENT_APP_VERSION       |                                                               | The current app version.                              |
+| hockey_url                | FL_JIRA_COMMENT_HOCKEY_URL        | `Actions.lane_context[SharedValues::HOCKEY_DOWNLOAD_LINK]`    | URL to the HockeyApp build.                           |
+| username                  | FL_JIRA_USERNAME                  |                                                               | Jira username.                                        |
+| password                  | FL_JIRA_PASSWORD                  |                                                               | Jira password.                                        |
+| host                      | FL_JIRA_HOST                      |                                                               | Jira host location.                                   |
+| context_path              | FL_JIRA_CONTEXT_PATH              | `''`                                                          | Jira context path.                                    |
+| disable_ssl_verification  | FL_JIRA_DISABLE_SSL_VERIFICATION  | `false`                                                       | Disable Jira SSL verification.                        |
 
 #### Usage
 
@@ -134,16 +134,16 @@ Generates a changelog containing all the completed issues and any additional mes
 
 #### Parameters
 
-| Parameter                 | Environment Name                      | Optional  | Default Value         | Description                                                               |
-|-------------------------- |-----------------------------------    |---------- |--------------------   |-------------------------------------------------------------------------  |
-| issues                    | FL_RELEASE_NOTES_ISSUES               | No        | `[]`                  | The Jira issues completed as part of this build. An Array of Strings.     |
-| include_commits           | FL_HOCKEY_COMMENT_INCLUDE_COMMITS     | No        | `[]`                  | Additional commit messages to be included as part of the release notes.   |
-| build_url                 | FL_RELEASE_NOTES_BUILD_URL            | No        | `ENV['BUILD_URL']`    | URL to the CI build.                                                      |
-| username                  | FL_JIRA_USERNAME                      | No        | `nil`                 | Jira username.                                                            |
-| password                  | FL_JIRA_PASSWORD                      | No        | `nil`                 | Jira password.                                                            |
-| host                      | FL_JIRA_HOST                          | No        | `nil`                 | Jira host location.                                                       |
-| context_path              | FL_JIRA_CONTEXT_PATH                  | No        | `''`                  | Jira context path.                                                        |
-| disable_ssl_verification  | FL_JIRA_DISABLE_SSL_VERIFICATION      | No        | `false`               | Disable Jira SSL verification.                                            |
+| Parameter                 | Environment Name                      | Default Value         | Description                                                               |
+|-------------------------- |-----------------------------------    |--------------------   |-------------------------------------------------------------------------  |
+| issues                    | FL_RELEASE_NOTES_ISSUES               | `[]`                  | The Jira issues completed as part of this build. An Array of Strings.     |
+| include_commits           | FL_HOCKEY_COMMENT_INCLUDE_COMMITS     | `[]`                  | Additional commit messages to be included as part of the release notes.   |
+| build_url                 | FL_RELEASE_NOTES_BUILD_URL            | `ENV['BUILD_URL']`    | URL to the CI build.                                                      |
+| username                  | FL_JIRA_USERNAME                      |                       | Jira username.                                                            |
+| password                  | FL_JIRA_PASSWORD                      |                       | Jira password.                                                            |
+| host                      | FL_JIRA_HOST                          |                       | Jira host location.                                                       |
+| context_path              | FL_JIRA_CONTEXT_PATH                  | `''`                  | Jira context path.                                                        |
+| disable_ssl_verification  | FL_JIRA_DISABLE_SSL_VERIFICATION      | `false`               | Disable Jira SSL verification.                                            |
 
 #### Usage
 
