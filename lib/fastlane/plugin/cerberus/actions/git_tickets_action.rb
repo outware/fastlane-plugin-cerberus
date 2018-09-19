@@ -30,9 +30,8 @@ module Fastlane
           return nil
         end
 
-        Helper::CerberusHelper.jira_helper(
-          from: from,
-          to: to,
+        other_action.changelog_from_git_commits(
+          between: [from, to],
           pretty: pretty,
           merge_commit_filtering: :exclude_merges.to_s
         )
