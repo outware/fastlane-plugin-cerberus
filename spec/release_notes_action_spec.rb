@@ -4,6 +4,7 @@ describe Fastlane::Actions::ReleaseNotesAction do
     username = 'jira'
     password = 'xyz123'
     build_url = 'https://jenkins.com/build/1'
+    stub_jira_client = StubJiraClient.new
 
     before(:each) do
       allow(FastlaneCore::Helper::CerberusHelper)
@@ -14,12 +15,14 @@ describe Fastlane::Actions::ReleaseNotesAction do
             params[:password],
             params[:context_path],
             params[:disable_ssl_verification],
-            StubJiraClient.new
+            stub_jira_client
           )
         end
     end
 
     it 'formats the notes corretly' do
+      stub_jira_client.Issue.issues = [StubJiraClient::JiraIssue.new("CER-1", "Summary for: CER-1")]
+
       result = execute_lane(
         body: "release_notes(
           issues: ['CER-1'],
@@ -30,24 +33,21 @@ describe Fastlane::Actions::ReleaseNotesAction do
         )"
       )
 
-      expect(result).to eq("Jenkins: [Build #1|https://jenkins.com/build/1]\nHockeyApp: [Version 1.0 (1)|https://hockeyApp.net/app/1]")
+      expect(result).to eq("### Changelog\n\n- [CER-1](https://www.jira.com/browse/CER-1) - Summary for: CER-1\n\nBuilt by [Jenkins](https://jenkins.com/build/1)")
     end
 
-    it 'doesnt comment when no issues are provided' do
-      # result = execute_lane(
-      #   body: "jira_comment(
-      #     issues: [],
-      #     host: '#{host}',
-      #     username: '#{username}',
-      #     password: '#{password}',
-      #     build_number: '#{build_number}',
-      #     build_url: '#{build_url}',
-      #     app_version: '#{app_version}',
-      #     hockey_url: '#{hockey_url}'
-      #   )"
-      # )
+    it 'formats the notes correctly when no issues are included' do
+      result = execute_lane(
+        body: "release_notes(
+          issues: [],
+          host: '#{host}',
+          username: '#{username}',
+          password: '#{password}',
+          buildURL: '#{build_url}'
+        )"
+      )
 
-      # expect(result).to eq(nil)
+      expect(result).to eq("### Changelog\n\nNo changes included.\n\nBuilt by [Jenkins](https://jenkins.com/build/1)")
     end
   end
 end

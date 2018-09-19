@@ -24,21 +24,47 @@ def execute_lane(body:)
 end
 
 class StubJiraClient
-end
+  class JiraIssue
+    class Comments
+      class Build
+        class << self
+          attr_reader :comment
+        end
 
-class StubJiraHelper < FastlaneCore::Helper::CerberusHelper::JiraHelper
-  JiraIssue = Struct.new(:key, :summary)
+        def self.save(params)
+          @comment = params['body']
+        end
+      end
 
-  def initialize
-  end
+      def build
+        Build
+      end
+    end
 
-  def get(issues:)
-    issues.map do |issue|
-      JiraIssue.new(issue, "Summary for: #{issue}")
+    attr_reader :key
+    attr_reader :summary
+
+    def initialize(key, summary)
+      @key = key
+      @summary = summary
+    end
+
+    def comments
+      Comments.new
     end
   end
 
-  def add_comment(comment:, issues:)
-    comment
+  class StubJiraIssues
+    class << self
+      attr_writer(:issues)
+    end
+
+    def self.jql(client, jql, options = { fields: nil, start_at: nil, max_results: nil, expand: nil, validate_query: true })
+      @issues
+    end
+  end
+
+  def Issue
+    StubJiraIssues
   end
 end

@@ -7,16 +7,30 @@ describe Fastlane::Actions::JiraCommentAction do
     build_url = 'https://jenkins.com/build/1'
     app_version = '1.0'
     hockey_url = 'https://hockeyApp.net/app/1'
+    stub_jira_client = StubJiraClient.new
 
     before(:each) do
       allow(FastlaneCore::Helper::CerberusHelper)
         .to receive(:jira_helper) do |params|
-          StubJiraHelper.new
+          FastlaneCore::Helper::CerberusHelper::JiraHelper.new(
+            params[:host],
+            params[:username],
+            params[:password],
+            params[:context_path],
+            params[:disable_ssl_verification],
+            stub_jira_client
+          )
         end
     end
 
-    it 'formats the comment corretly' do
-      result = execute_lane(
+    after(:each) do
+      stub_jira_client.Issue.issues = []
+    end
+
+    it 'formats the comment correctly' do
+      stub_jira_client.Issue.issues = [StubJiraClient::JiraIssue.new("CER-1", "Summary for: CER-1")]
+
+      execute_lane(
         body: "jira_comment(
           issues: ['CER-1'],
           host: '#{host}',
@@ -29,7 +43,7 @@ describe Fastlane::Actions::JiraCommentAction do
         )"
       )
 
-      expect(result).to eq("Jenkins: [Build #1|https://jenkins.com/build/1]\nHockeyApp: [Version 1.0 (1)|https://hockeyApp.net/app/1]")
+      expect(StubJiraClient::JiraIssue::Comments::Build.comment).to eq("Jenkins: [Build #1|https://jenkins.com/build/1]\nHockeyApp: [Version 1.0 (1)|https://hockeyApp.net/app/1]")
     end
 
     it 'doesnt comment when no issues are provided' do
