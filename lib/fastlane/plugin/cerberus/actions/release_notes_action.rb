@@ -13,7 +13,7 @@ module Fastlane
           disable_ssl_verification: params[:disable_ssl_verification]
         )
         issues = @jira_helper.get(issues: params[:issues])
-        Actions.lane_context[SharedValues::FL_CHANGELOG] = comment(issues: issues, include_commits: params[:include_commits], url: params[:buildURL])
+        Actions.lane_context[SharedValues::FL_CHANGELOG] = comment(issues: issues, include_commits: params[:include_commits], url: params[:build_url])
       end
 
       #####################################################
@@ -82,7 +82,7 @@ module Fastlane
             type: Array
           ),
           FastlaneCore::ConfigItem.new(
-            key: :buildURL,
+            key: :build_url,
             env_name: 'FL_RELEASE_NOTES_BUILD_URL',
             description:  'Link to the ci build',
             optional: false,
