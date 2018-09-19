@@ -29,7 +29,7 @@ describe Fastlane::Actions::ReleaseNotesAction do
           host: '#{host}',
           username: '#{username}',
           password: '#{password}',
-          buildURL: '#{build_url}'
+          build_url: '#{build_url}'
         )"
       )
 
@@ -43,7 +43,7 @@ describe Fastlane::Actions::ReleaseNotesAction do
           host: '#{host}',
           username: '#{username}',
           password: '#{password}',
-          buildURL: '#{build_url}'
+          build_url: '#{build_url}'
         )"
       )
 
