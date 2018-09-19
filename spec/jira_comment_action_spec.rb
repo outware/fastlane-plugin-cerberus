@@ -10,21 +10,22 @@ describe Fastlane::Actions::JiraCommentAction do
 
     before(:each) do
       allow(FastlaneCore::Helper::CerberusHelper)
-        .to receive(:jira_helper)
-        .and_return(StubJiraHelper.new)
+        .to receive(:jira_helper) do |params|
+          StubJiraHelper.new
+        end
     end
 
     it 'formats the comment corretly' do
       result = execute_lane(
         body: "jira_comment(
           issues: ['CER-1'],
-          host: \'#{host}\',
-          username: \'#{username}\',
-          password: \'#{password}\',
-          build_number: \'#{build_number}\',
-          build_url: \'#{build_url}\',
-          app_version: \'#{app_version}\',
-          hockey_url: \'#{hockey_url}\'
+          host: '#{host}',
+          username: '#{username}',
+          password: '#{password}',
+          build_number: '#{build_number}',
+          build_url: '#{build_url}',
+          app_version: '#{app_version}',
+          hockey_url: '#{hockey_url}'
         )"
       )
 
@@ -35,13 +36,13 @@ describe Fastlane::Actions::JiraCommentAction do
       result = execute_lane(
         body: "jira_comment(
           issues: [],
-          host: \'#{host}\',
-          username: \'#{username}\',
-          password: \'#{password}\',
-          build_number: \'#{build_number}\',
-          build_url: \'#{build_url}\',
-          app_version: \'#{app_version}\',
-          hockey_url: \'#{hockey_url}\'
+          host: '#{host}',
+          username: '#{username}',
+          password: '#{password}',
+          build_number: '#{build_number}',
+          build_url: '#{build_url}',
+          app_version: '#{app_version}',
+          hockey_url: '#{hockey_url}'
         )"
       )
 

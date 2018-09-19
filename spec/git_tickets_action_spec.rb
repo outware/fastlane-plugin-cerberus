@@ -37,7 +37,7 @@ describe Fastlane::Actions::GitTicketsAction do
             ].join("\n")
           )
 
-        result = execute_lane(body: 'git_tickets(exclude_regex: \'([A-Z]+-\d+)\')')
+        result = execute_lane(body: "git_tickets(exclude_regex: '([A-Z]+-\\d+)')")
 
         expect(result).to eq([])
       end

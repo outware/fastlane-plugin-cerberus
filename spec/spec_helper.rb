@@ -23,13 +23,18 @@ def execute_lane(body:)
   ).runner.execute(:test)
 end
 
+class StubJiraClient
+end
+
 class StubJiraHelper < FastlaneCore::Helper::CerberusHelper::JiraHelper
+  JiraIssue = Struct.new(:key, :summary)
+
   def initialize
   end
 
   def get(issues:)
     issues.map do |issue|
-      { 'key': issue, summary: "Summary for: #{issue}" }
+      JiraIssue.new(issue, "Summary for: #{issue}")
     end
   end
 

@@ -6,11 +6,34 @@ module Fastlane
 
   module Helper
     class CerberusHelper
+      class JiraClientHelper
+        def self.client(host:, username:, password:, context_path:, disable_ssl_verification:)
+          options = {
+           site: host,
+           context_path: context_path,
+           auth_type: :basic,
+           username: username,
+           password: password,
+           ssl_verify_mode: disable_ssl_verification ? OpenSSL::SSL::VERIFY_NONE : OpenSSL::SSL::VERIFY_PEER
+          }
+
+          JIRA::Client.new(options)
+        end
+      end
+
       class JiraHelper
-        def initialize(host, username, password, context_path, disable_ssl_verification)
+        def initialize(host, username, password, context_path, disable_ssl_verification, jira_client_helper)
           @host = host
           @context_path = context_path
-          create_client(host: host, username: username, password: password, context_path: context_path, disable_ssl_verification: disable_ssl_verification)
+
+          jira_client_helper ||= JiraClientHelper.client(
+            host: host,
+            username: username,
+            password: password,
+            context_path: context_path,
+            disable_ssl_verification: disable_ssl_verification
+          )
+          @client = jira_client_helper
         end
 
         def get(issues:)
@@ -40,21 +63,6 @@ module Fastlane
 
         def url(issue:)
           [@host, @context_path, 'browse', issue.key].reject(&:empty?).join('/')
-        end
-
-        private
-
-        def create_client(host:, username:, password:, context_path:, disable_ssl_verification:)
-          options = {
-           site: host,
-           context_path: context_path,
-           auth_type: :basic,
-           username: username,
-           password: password,
-           ssl_verify_mode: disable_ssl_verification ? OpenSSL::SSL::VERIFY_NONE : OpenSSL::SSL::VERIFY_PEER
-          }
-
-          @client = JIRA::Client.new(options)
         end
       end
 
