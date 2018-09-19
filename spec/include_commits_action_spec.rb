@@ -13,6 +13,8 @@ describe Fastlane::Actions::IncludeCommitsAction do
           [
             '[CER-1] - HELLO',
             '[CER-2] - TEST',
+            '[CER3] - TEST',
+            'CER4 - TEST',
             '[TECH] - XYZ',
             '[tech] - ZYX'
           ].join("\n")

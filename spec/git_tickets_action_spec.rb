@@ -16,7 +16,8 @@ describe Fastlane::Actions::GitTicketsAction do
             '[ZXY-5233] - Update API model',
             'CAB-51 - Update API model',
             '[macc-3213] - Address bug',
-            '[TECH] - Remove dead code'
+            '[TECH] - Remove dead code',
+            'CAB51 - Update API model'
           ].join("\n")
         )
 
@@ -33,6 +34,7 @@ describe Fastlane::Actions::GitTicketsAction do
             [
               '[ZYZ-123] - Update SSL',
               '[xyz-1] - Update API model',
+              'CER123 - Update API model',
               '[TECH] - Remove dead code'
             ].join("\n")
           )
