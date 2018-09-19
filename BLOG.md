@@ -1,4 +1,4 @@
-# How to improve traceability in projects
+# How to improve traceability in your build pipeline
 
 ## Is this for me?
 
@@ -6,7 +6,6 @@ Do you use any of these tools for mobile development?
 
 == small image of logos ==
 
-<br />
 
 Do you manually comment about automated events on your tickets?
 
@@ -57,10 +56,15 @@ Cerberus is a collection of tasks that work together to achieve a common goal.
 
 == Img ==
 
-Cerberus 'wired up' tools that wouldn't speak to each other before. JIRA served as a source of truth and as a dashboard of information thereby improving operational efficiency in the team.
-
-## Where to from here?
+## Where to go from here?
 
 Cerberus is compatible with project that use Fastlane or Gradle. If you would like to give it a spin:
 
 == Add Links here ==
+
+## Conclusion
+
+Cerberus helped us by 'wiring up' tools that wouldn't normally speak to each other. JIRA now serves as a source of truth **and** as a dashboard of information. Our team members don't have to chase up on our tools or chase up each other,  giving them time to think about and solve harder problems.
+
+Do you see an issue with our plugins or want to add a feature? Feel free to submit a PR to Github <link pending>
+
