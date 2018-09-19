@@ -127,7 +127,7 @@ module Fastlane
       end
 
       def self.author
-        'Harry Singh <harry.singh@outware.com.au>'
+        'Harry Singh <hhs4harry@gmail.com>'
       end
     end
   end
