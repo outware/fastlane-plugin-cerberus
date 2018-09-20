@@ -89,8 +89,6 @@ If there are additional changes that need to be included in the change log that 
 
 ```ruby
   additional_commits = find_commits(
-    from: 'HEAD',
-    to: 'c6150a1dbf20e0e8c10d05d9c21a1ce1ee368535',
     matching: '\[TECH\]'
   )
 
