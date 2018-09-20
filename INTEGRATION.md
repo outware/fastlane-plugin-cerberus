@@ -120,7 +120,7 @@ It includes the following things...
 
 JIRA information is retrieved using the REST API with the supplied credentials.
 
-By default the link to jenkins is populated using the `BUILD_URL` environment variable, this is set by jenkins.  If you need are using a different CI you can customise this by specifying an additional parameter `build_url` when generating the release notes.
+By default the link to jenkins is populated using the `BUILD_URL` environment variable, this is set by jenkins.  If you are using a different CI you can customise this by specifying an additional parameter `build_url` when generating the release notes.
 
 ## Notification of code changes
 
