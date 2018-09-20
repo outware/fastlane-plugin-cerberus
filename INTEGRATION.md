@@ -108,7 +108,7 @@ If there are additional changes that need to be included in the change log that 
   )
 ```
 
-### Changelog
+### Sample Changelog
 
 Below is an example of the markdown change log that is created.
 
