@@ -10,12 +10,12 @@ describe Fastlane::Actions::ReleaseNotesAction do
       allow(FastlaneCore::Helper::CerberusHelper)
         .to receive(:jira_helper) do |params|
           FastlaneCore::Helper::CerberusHelper::JiraHelper.new(
-            params[:host],
-            params[:username],
-            params[:password],
-            params[:context_path],
-            params[:disable_ssl_verification],
-            stub_jira_client
+            host: params[:host],
+            username: params[:username],
+            password: params[:password],
+            context_path: params[:context_path],
+            disable_ssl_verification: params[:disable_ssl_verification],
+            jira_client_helper: stub_jira_client
           )
         end
     end
