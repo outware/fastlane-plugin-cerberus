@@ -50,23 +50,23 @@ Returns an Array of Strings. e.g `["CER-1", "CER-2"]`
 
 ---
 
-### [include_commits](lib/fastlane/plugin/cerberus/actions/include_commits_action.rb)
+### [find_commits](lib/fastlane/plugin/cerberus/actions/find_commits_action.rb)
 
 Extracts the commit messages from a set of commits using regex.
 
 #### Parameters
 
 | Parameter     | Environment Name                  | Default Value                             | Description                                                                   |
-|-----------    |---------------------------------- |---------------------------------------    |------------------------------------------------------------------------------ |
-| from          | FL_INCLUDE_COMMITS_FROM           | `ENV['FL_GIT_TICKETS_FROM']`              | The commit SHA of the first commit to parse for ticket information.           |
-| to            | FL_INCLUDE_COMMITS_TO             | `ENV['FL_GIT_TICKETS_TO']`                | The commit SHA of the last commit to parse for ticket information.            |
-| regex         | FL_INCLUDE_COMMITS_REGEX          | `ENV['FL_GIT_TICKETS_INCLUDE_REGEX']`     | Regex which will be used to extract the tickets from the commit messages.     |
-| pretty        | FL_INCLUDE_COMMITS_PRETTY_FORMAT  | `ENV['FL_GIT_TICKETS_PRETTY_FORMAT']`     | [A git log pretty format.](https://git-scm.com/docs/git-log#_pretty_formats)  |
+|-----------    |-------------------------------    |---------------------------------------    |------------------------------------------------------------------------------ |
+| from          | FL_FIND_COMMITS_FROM              | `ENV['FL_GIT_TICKETS_FROM']`              | The commit SHA of the first commit to parse for ticket information.           |
+| to            | FL_FIND_COMMITS_TO                | `ENV['FL_GIT_TICKETS_TO']`                | The commit SHA of the last commit to parse for ticket information.            |
+| regex         | FL_FIND_COMMITS_REGEX             | `ENV['FL_GIT_TICKETS_INCLUDE_REGEX']`     | Regex which will be used to extract the tickets from the commit messages.     |
+| pretty        | FL_FIND_COMMITS_PRETTY_FORMAT     | `ENV['FL_GIT_TICKETS_PRETTY_FORMAT']`     | [A git log pretty format.](https://git-scm.com/docs/git-log#_pretty_formats)  |
 
 #### Usage
 
 ```ruby
-include_commits(
+find_commits(
  from: 'HEAD',
  to: '81fae0ffcc714fb56a1c186ae7c73c80442fff74',
  regex: 'TECH',
