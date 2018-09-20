@@ -64,7 +64,9 @@ class StubJiraClient
     end
   end
 
+  # rubocop:disable MethodName
   def Issue
     StubJiraIssues
   end
+  # rubocop:enable MethodName
 end
