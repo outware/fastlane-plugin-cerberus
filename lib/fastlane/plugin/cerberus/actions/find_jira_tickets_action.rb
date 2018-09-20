@@ -3,7 +3,7 @@ require_relative '../helper/cerberus_helper'
 
 module Fastlane
   module Actions
-    class GitTicketsAction < Action
+    class FindJiraTicketsAction < Action
       def self.run(params)
         regex = Regexp.new(params[:regex])
         changelog = log(from: params[:from], to: params[:to], pretty: params[:pretty])
@@ -71,34 +71,34 @@ module Fastlane
         [
           FastlaneCore::ConfigItem.new(
             key: :from,
-            env_name: 'FL_GIT_TICKETS_FROM',
+            env_name: 'FL_FIND_JIRA_TICKETS_FROM',
             description:  'start commit',
             optional: false,
             default_value: 'HEAD'
           ),
           FastlaneCore::ConfigItem.new(
             key: :to,
-            env_name: 'FL_GIT_TICKETS_TO',
+            env_name: 'FL_FIND_JIRA_TICKETS_TO',
             description:  'end commit',
             optional: false,
             default_value: ENV['GIT_PREVIOUS_SUCCESSFUL_COMMIT'] || 'HEAD'
           ),
           FastlaneCore::ConfigItem.new(
             key: :regex,
-            env_name: 'FL_GIT_TICKETS_REGEX',
+            env_name: 'FL_FIND_JIRA_TICKETS_REGEX',
             description:  'regex to extract ticket numbers',
             optional: false,
             default_value: '([A-Z]+-\d+)'
           ),
           FastlaneCore::ConfigItem.new(
             key: :exclude_regex,
-            env_name: 'FL_GIT_TICKETS_EXCLUDE_REGEX',
+            env_name: 'FL_FIND_JIRA_TICKETS_EXCLUDE_REGEX',
             description:  'regex to exclude from the change log',
             optional: true
           ),
           FastlaneCore::ConfigItem.new(
             key: :pretty,
-            env_name: 'FL_GIT_TICKETS_PRETTY_FORMAT',
+            env_name: 'FL_FIND_JIRA_TICKETS_PRETTY_FORMAT',
             description:  'git pretty format',
             optional: false,
             default_value: '* (%h) %s'

@@ -66,28 +66,28 @@ module Fastlane
             env_name: 'FL_FIND_COMMITS_FROM',
             description:  'start commit',
             optional: false,
-            default_value: ENV['FL_GIT_TICKETS_FROM'] || 'HEAD'
+            default_value: ENV['FL_FIND_JIRA_TICKETS_FROM'] || 'HEAD'
           ),
           FastlaneCore::ConfigItem.new(
             key: :to,
             env_name: 'FL_FIND_COMMITS_TO',
             description:  'end commit',
             optional: false,
-            default_value: ENV['FL_GIT_TICKETS_TO'] || ENV['GIT_PREVIOUS_SUCCESSFUL_COMMIT'] || 'HEAD'
+            default_value: ENV['FL_FIND_JIRA_TICKETS_TO'] || ENV['GIT_PREVIOUS_SUCCESSFUL_COMMIT'] || 'HEAD'
           ),
           FastlaneCore::ConfigItem.new(
             key: :regex,
             env_name: 'FL_FIND_COMMITS_REGEX',
             description:  'regex to only include to the change log',
             optional: false,
-            default_value: ENV['FL_GIT_TICKETS_INCLUDE_REGEX'] || '([A-Z]+-\d+)'
+            default_value: ENV['FL_FIND_JIRA_TICKETS_INCLUDE_REGEX'] || '([A-Z]+-\d+)'
           ),
           FastlaneCore::ConfigItem.new(
             key: :pretty,
             env_name: 'FL_FIND_COMMITS_PRETTY_FORMAT',
             description:  'git pretty format',
             optional: false,
-            default_value: ENV['FL_GIT_TICKETS_PRETTY_FORMAT'] || '%s'
+            default_value: ENV['FL_FIND_JIRA_TICKETS_PRETTY_FORMAT'] || '%s'
           )
         ]
       end

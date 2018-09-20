@@ -10,7 +10,7 @@ lane :test do
   app_version = '1.0'
 
   # Extract the issues from the commit history
-  issues = git_tickets(
+  issues = find_jira_tickets(
     from: from,
     to: to
   )
