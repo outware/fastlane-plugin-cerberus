@@ -102,10 +102,10 @@ Below is an example of the markdown change log that is created.
 ```markdown
 ### Changelog
 
-- [CER-4](https://fakejira.io/browse/CER-4) - The issue summary for of JIRA ticket CER-4
-- [CER-2](https://fakejira.io/browse/CER-2) - The issue summary for of JIRA ticket CER-2
-- [CER-1](https://fakejira.io/browse/CER-1) - The issue summary for of JIRA ticket CER-1
-- [CER-0](https://fakejira.io/browse/CER-0) - The issue summary for of JIRA ticket CER-0
+- [CER-4](https://fakejira.io/browse/CER-4) - The issue summary for JIRA ticket CER-4
+- [CER-2](https://fakejira.io/browse/CER-2) - The issue summary for JIRA ticket CER-2
+- [CER-1](https://fakejira.io/browse/CER-1) - The issue summary for JIRA ticket CER-1
+- [CER-0](https://fakejira.io/browse/CER-0) - The issue summary for JIRA ticket CER-0
 - [TECH] - Commit message 2 for fake tech task
 - [TECH] - Commit message 1 for fake tech task
 
