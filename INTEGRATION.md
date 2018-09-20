@@ -97,6 +97,31 @@ If there are additional changes that need to be included in the change log that 
   )
 ```
 
+Below is an example of the markdown change log that is created.
+
+```markdown
+### Changelog
+
+- [CER-4](https://fakejira.io/browse/CER-4) - The issue summary for of JIRA ticket CER-4
+- [CER-2](https://fakejira.io/browse/CER-2) - The issue summary for of JIRA ticket CER-2
+- [CER-1](https://fakejira.io/browse/CER-1) - The issue summary for of JIRA ticket CER-1
+- [CER-0](https://fakejira.io/browse/CER-0) - The issue summary for of JIRA ticket CER-0
+- [TECH] - Commit message 2 for fake tech task
+- [TECH] - Commit message 1 for fake tech task
+
+Built by [Jenkins](https://fakejenkins.io/job/Cerberus%20Pull%20Request%20Builder/job/cerberus-ios-swift/job/PR-56/5/)
+```
+
+It includes the following things...
+
+* Links to JIRA issues and relevant summary from JIRA
+* Commit messages for additional commits included
+* A link to the relevant build in Jenkins
+
+JIRA information is retrieved using the REST API with the supplied credentials.
+
+By default the link to jenkins is populated using the `BUILD_URL` environment variable, this is set by jenkins.  If you need are using a different CI you can customise this by specifying an additional parameter `build_url` when generating the release notes.
+
 ## Notification of code changes
 
 //TODO: ...
