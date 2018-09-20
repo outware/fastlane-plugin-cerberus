@@ -1,7 +1,7 @@
-describe Fastlane::Actions::FindJiraTicketsAction do
+describe Fastlane::Actions::FindTicketsAction do
   describe '#run' do
     it 'doesnt find issues when changelog is empty' do
-      result = execute_lane(body: 'find_jira_tickets')
+      result = execute_lane(body: 'find_tickets')
 
       expect(result).to eq([])
     end
@@ -21,7 +21,7 @@ describe Fastlane::Actions::FindJiraTicketsAction do
           ].join("\n")
         )
 
-      result = execute_lane(body: 'find_jira_tickets')
+      result = execute_lane(body: 'find_tickets')
 
       expect(result).to eq(['XYZ-312', 'ZXY-5233', 'CAB-51'])
     end
@@ -39,7 +39,7 @@ describe Fastlane::Actions::FindJiraTicketsAction do
             ].join("\n")
           )
 
-        result = execute_lane(body: "find_jira_tickets(excluding: '([A-Z]+-\\d+)')")
+        result = execute_lane(body: "find_tickets(excluding: '([A-Z]+-\\d+)')")
 
         expect(result).to eq([])
       end

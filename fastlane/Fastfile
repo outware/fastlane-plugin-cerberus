@@ -10,7 +10,7 @@ lane :test do
   app_version = '1.0'
 
   # Extract the issues from the commit history
-  issues = find_jira_tickets(
+  tickets = find_tickets(
     from: from,
     to: to
   )
@@ -24,7 +24,7 @@ lane :test do
 
   # Generate release notes
   release_notes = release_notes(
-    issues: issues,
+    issues: tickets,
     include_commits: found_commits,
     build_url: build_url,
     username: jira_username,
@@ -34,7 +34,7 @@ lane :test do
 
   # Comment on Jira issues found in the commit history
   jira_comment(
-    issues: issues,
+    issues: tickets,
     build_number: build_number,
     build_url: build_url,
     app_version: app_version,
