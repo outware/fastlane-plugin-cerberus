@@ -2,7 +2,7 @@ module Fastlane
   module Actions
     class FindCommitsAction < Action
       def self.run(params)
-        regex = Regexp.new(params[:regex])
+        regex = Regexp.new(params[:matching])
         changelog = log(from: params[:from], to: params[:to], pretty: params[:pretty])
 
         if changelog.to_s.empty?
@@ -76,11 +76,11 @@ module Fastlane
             default_value: ENV['FL_FIND_JIRA_TICKETS_TO'] || ENV['GIT_PREVIOUS_SUCCESSFUL_COMMIT'] || 'HEAD'
           ),
           FastlaneCore::ConfigItem.new(
-            key: :regex,
-            env_name: 'FL_FIND_COMMITS_REGEX',
+            key: :matching,
+            env_name: 'FL_FIND_COMMITS_MATCHING',
             description:  'regex to only include to the change log',
             optional: false,
-            default_value: ENV['FL_FIND_JIRA_TICKETS_INCLUDE_REGEX'] || '([A-Z]+-\d+)'
+            default_value: ENV['FL_FIND_JIRA_TICKETS_MATCHING'] || '([A-Z]+-\d+)'
           ),
           FastlaneCore::ConfigItem.new(
             key: :pretty,

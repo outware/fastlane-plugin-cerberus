@@ -20,7 +20,7 @@ describe Fastlane::Actions::FindCommitsAction do
           ].join("\n")
         )
 
-      result = execute_lane(body: 'find_commits(regex: \'\[([a-zA-Z]+)\]\')')
+      result = execute_lane(body: 'find_commits(matching: \'\[([a-zA-Z]+)\]\')')
 
       expect(result).to eq(['[TECH] - XYZ', '[tech] - ZYX'])
     end

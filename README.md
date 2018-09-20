@@ -28,7 +28,7 @@ This action will extract tickets using a provided regular expression. The defaul
 |-----------    |------------------------------------   |---------------------------------------------------    |------------------------------------------------------------------------------ |
 | from          | FL_FIND_JIRA_TICKETS_FROM             | `'HEAD'`                                              | The commit SHA of the first commit to parse for ticket information.           |
 | to            | FL_FIND_JIRA_TICKETS_TO               | `ENV[GIT_PREVIOUS_SUCCESSFUL_COMMIT]` or `'HEAD'`     | The commit SHA of the last commit to parse for ticket information.            |
-| regex         | FL_FIND_JIRA_TICKETS_REGEX            | `'([A-Z]+-\d+)'`                                      | Regex which will be used to extract the tickets from the commit messages.     |
+| matching      | FL_FIND_JIRA_TICKETS_MATCHING         | `'([A-Z]+-\d+)'`                                      | Regex which will be used to extract the tickets from the commit messages.     |
 | excluding     | FL_FIND_JIRA_TICKETS_EXCLUDING        |                                                       | Additional regex to ignore specific commits or keywords.                      |
 | pretty        | FL_FIND_JIRA_TICKETS_PRETTY_FORMAT    | `'* (%h) %s'`                                         | [A git log pretty format.](https://git-scm.com/docs/git-log#_pretty_formats)  |
 
@@ -38,8 +38,8 @@ This action will extract tickets using a provided regular expression. The defaul
 find_jira_tickets(
  from: 'HEAD',
  to: '81fae0ffcc714fb56a1c186ae7c73c80442fff74',
- regex: '([A-Z]+-\d+)',
- exclude_regex: 'TECH',
+ matching: '([A-Z]+-\d+)',
+ excluding: 'TECH',
  pretty: '* (%h) %s'
 )
 ```
@@ -60,7 +60,7 @@ Extracts the commit messages from a set of commits using regex.
 |-----------    |-------------------------------    |---------------------------------------------  |------------------------------------------------------------------------------ |
 | from          | FL_FIND_COMMITS_FROM              | `ENV['FL_FIND_JIRA_TICKETS_FROM']`            | The commit SHA of the first commit to parse for ticket information.           |
 | to            | FL_FIND_COMMITS_TO                | `ENV['FL_FIND_JIRA_TICKETS_TO']`              | The commit SHA of the last commit to parse for ticket information.            |
-| regex         | FL_FIND_COMMITS_REGEX             | `ENV['FL_FIND_JIRA_TICKETS_INCLUDE_REGEX']`   | Regex which will be used to extract the tickets from the commit messages.     |
+| matching      | FL_FIND_COMMITS_MATCHING          | `ENV['FL_FIND_JIRA_TICKETS_MATCHING']`        | Regex which will be used to extract the tickets from the commit messages.     |
 | pretty        | FL_FIND_COMMITS_PRETTY_FORMAT     | `ENV['FL_FIND_JIRA_TICKETS_PRETTY_FORMAT']`   | [A git log pretty format.](https://git-scm.com/docs/git-log#_pretty_formats)  |
 
 #### Usage
@@ -69,7 +69,7 @@ Extracts the commit messages from a set of commits using regex.
 find_commits(
  from: 'HEAD',
  to: '81fae0ffcc714fb56a1c186ae7c73c80442fff74',
- regex: 'TECH',
+ matching: 'TECH',
  pretty: '%s'
 )
 ```

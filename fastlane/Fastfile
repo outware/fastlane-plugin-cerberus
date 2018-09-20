@@ -19,7 +19,7 @@ lane :test do
   find_commits = find_commits(
     from: from,
     to: to,
-    regex: 'TECH'
+    matching: 'TECH'
   )
 
   # Generate release notes
