@@ -22,8 +22,8 @@ lane :test do
     regex: 'TECH'
   )
 
-  # Generate release notes
-  release_notes = release_notes(
+  # Generates and returns the release notes
+  release_notes(
     issues: issues,
     include_commits: include_commits,
     build_url: build_url,
