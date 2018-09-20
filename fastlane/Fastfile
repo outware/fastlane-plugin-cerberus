@@ -16,7 +16,7 @@ lane :test do
   )
 
   # Additional commits to include in the release notes
-  find_commits = find_commits(
+  found_commits = find_commits(
     from: from,
     to: to,
     matching: 'TECH'
@@ -25,7 +25,7 @@ lane :test do
   # Generate release notes
   release_notes = release_notes(
     issues: issues,
-    find_commits: find_commits,
+    include_commits: found_commits,
     build_url: build_url,
     username: jira_username,
     password: jira_password,
