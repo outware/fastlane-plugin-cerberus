@@ -70,7 +70,7 @@ The following will include jira tickets that have `CER` in the issue key and exc
 ```ruby
   jira_tickets = find_tickets(
     matching: '(CER-\d+)'
-    excluding: '[WIP]'
+    excluding: '\[WIP\]'
   )
 
   release_notes(
