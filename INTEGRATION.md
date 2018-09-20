@@ -45,6 +45,8 @@ If your build is uploaded to another platform without an action that uses `Share
 
 `find_tickets` by default will retrieve all JIRA tickets from `HEAD` up until the commit hash of the last successful build specified by Jenkins.  It does this by reading `GIT_PREVIOUS_SUCCESSFUL_COMMIT` environment variable which is set by Jenkins for each build.
 
+### Customising commits
+
 The developer might like to customise the commits included.  For example you can include the commits between two specific commit hashes as shown below.
 
 ```ruby
@@ -81,6 +83,8 @@ The following will include jira tickets that have `CER` in the issue key and exc
   )
 ```
 
+### Including additional commits
+
 If there are additional changes that need to be included in the change log that do not have an associated JIRA ticket they can found using the `find_commits` action and included in the release notes with the `include_commits` parameter.
 
 ```ruby
@@ -96,6 +100,8 @@ If there are additional changes that need to be included in the change log that 
     host: jira_host
   )
 ```
+
+### Changelog
 
 Below is an example of the markdown change log that is created.
 
