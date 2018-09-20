@@ -20,12 +20,12 @@ fastlane add_plugin cerberus
 Generation of release notes using default parameters and comment format is done as follows
 
 ```ruby
-release_notes(
-  issues: find_jira_tickets,
-  username: jira_username,
-  password: jira_password,
-  host: jira_host
-)
+  release_notes(
+    issues: find_jira_tickets,
+    username: jira_username,
+    password: jira_password,
+    host: jira_host
+  )
 ```
 
 This action would normally be called prior to build upload actions such as `upload_to_testflight` and `hockey`.  
@@ -35,12 +35,12 @@ The `release_notes` action will set `SharedValues::FL_CHANGELOG` in the lane con
 If your build is uploaded to another platform without an action that uses `SharedValues::FL_CHANGELOG` the action returns the changelog as a result that can be used as needed.
 
 ```ruby
-changelog = release_notes(
-  issues: find_jira_tickets,
-  username: jira_username,
-  password: jira_password,
-  host: jira_host
-)
+  changelog = release_notes(
+    issues: find_jira_tickets,
+    username: jira_username,
+    password: jira_password,
+    host: jira_host
+  )
 ```
 
 `find_jira_tickets` by default will retrieve all JIRA tickets from `HEAD` up until the commit hash of the last successful build specified by Jenkins.  It does this by reading `GIT_PREVIOUS_SUCCESSFUL_COMMIT` environment variable which is set by Jenkins for each build.
@@ -48,17 +48,17 @@ changelog = release_notes(
 The developer might like to customise the commits included.  For example you can include the commits between two specific commit hashes as shown below.
 
 ```ruby
-jira_tickets = find_jira_tickets(
-  from: 'f1ed6916aa6609e04fe9b613e1e8152482e6de5e'
-  to: 'c6150a1dbf20e0e8c10d05d9c21a1ce1ee368535'
-)
+  jira_tickets = find_jira_tickets(
+    from: 'f1ed6916aa6609e04fe9b613e1e8152482e6de5e'
+    to: 'c6150a1dbf20e0e8c10d05d9c21a1ce1ee368535'
+  )
 
-release_notes(
-  issues: jira_tickets,
-  username: jira_username,
-  password: jira_password,
-  host: jira_host
-)
+  release_notes(
+    issues: jira_tickets,
+    username: jira_username,
+    password: jira_password,
+    host: jira_host
+  )
 ```
 
 By default commit comments will be scanned for JIRA issue keys using the following regular expression `([A-Z]+-\d+)`.
@@ -68,17 +68,17 @@ The developer can choose to use a different expression for example to gather jir
 The following will include jira tickets that have `CER` in the issue key and exclude any commits with `[WIP]` in the message.
 
 ```ruby
-jira_tickets = find_jira_tickets(
-  matching: '(CER-\d+)'
-  excluding: '[WIP]'
-)
+  jira_tickets = find_jira_tickets(
+    matching: '(CER-\d+)'
+    excluding: '[WIP]'
+  )
 
-release_notes(
-  issues: jira_tickets,
-  username: jira_username,
-  password: jira_password,
-  host: jira_host
-)
+  release_notes(
+    issues: jira_tickets,
+    username: jira_username,
+    password: jira_password,
+    host: jira_host
+  )
 ```
 
 If there are additional changes that need to be included in the change log that do not have an associated JIRA ticket they can found using the `find_commits` action and included in the release notes with the `include_commits` parameter.
@@ -88,13 +88,13 @@ If there are additional changes that need to be included in the change log that 
     matching: '\[TECH\]'
   )
 
- release_notes(
-  issues: find_jira_tickets,
-  include_commits: additional_commits,
-  username: jira_username,
-  password: jira_password,
-  host: jira_host
-)
+  release_notes(
+    issues: find_jira_tickets,
+    include_commits: additional_commits,
+    username: jira_username,
+    password: jira_password,
+    host: jira_host
+  )
 ```
 
 ## Notification of code changes
