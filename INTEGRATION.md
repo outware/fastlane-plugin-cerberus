@@ -64,7 +64,9 @@ release_notes(
 )
 ```
 
-If you would like to gather jira tickets for a specific project only you might like to customise the `matching` and `excluding` regular expression.
+By default commit comments will be scanned for JIRA issue keys using the following regular expression `([A-Z]+-\d+)`.
+
+The developer can choose to use a different expression for example to gather jira tickets for a specific project only you could customise the `matching` and `excluding` regular expression.
 
 The following will include jira tickets that have `CER` in the issue key and exclude any commits with `[WIP]` in the message.
 
