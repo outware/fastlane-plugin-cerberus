@@ -22,7 +22,6 @@ Generation of release notes using default parameters and comment format is done 
 ```ruby
 release_notes(
   issues: find_jira_tickets,
-  build_url: jenkins_url,
   username: jira_username,
   password: jira_password,
   host: jira_host
@@ -38,7 +37,6 @@ If your build is uploaded to another platform without an action that uses `Share
 ```ruby
 changelog = release_notes(
   issues: find_jira_tickets,
-  build_url: jenkins_url,
   username: jira_username,
   password: jira_password,
   host: jira_host
@@ -57,7 +55,6 @@ jira_tickets = find_jira_tickets(
 
 release_notes(
   issues: jira_tickets,
-  build_url: jenkins_url,
   username: jira_username,
   password: jira_password,
   host: jira_host
@@ -78,7 +75,6 @@ jira_tickets = find_jira_tickets(
 
 release_notes(
   issues: jira_tickets,
-  build_url: jenkins_url,
   username: jira_username,
   password: jira_password,
   host: jira_host
@@ -95,7 +91,6 @@ If there are additional changes that need to be included in the change log that 
  release_notes(
   issues: find_jira_tickets,
   include_commits: additional_commits,
-  build_url: build_url,
   username: jira_username,
   password: jira_password,
   host: jira_host
