@@ -69,7 +69,7 @@ module Fastlane
             key: :issues,
             env_name: 'FL_RELEASE_NOTES_ISSUES',
             description:  'Jira issues',
-            optional: false,
+            optional: true,
             default_value: [],
             type: Array
           ),
@@ -85,7 +85,7 @@ module Fastlane
             key: :build_url,
             env_name: 'FL_RELEASE_NOTES_BUILD_URL',
             description:  'Link to the ci build',
-            optional: false,
+            optional: true,
             default_value: ENV['BUILD_URL']
           ),
           FastlaneCore::ConfigItem.new(
@@ -110,14 +110,14 @@ module Fastlane
             key: :context_path,
             env_name: 'FL_JIRA_CONTEXT_PATH',
             description:  'Jira context path',
-            optional: false,
+            optional: true,
             default_value: ''
           ),
           FastlaneCore::ConfigItem.new(
             key: :disable_ssl_verification,
             env_name: 'FL_JIRA_DISABLE_SSL_VERIFICATION',
             description:  'Jira SSL Verification mode',
-            optional: false,
+            optional: true,
             default_value: false,
             type: Boolean
           )

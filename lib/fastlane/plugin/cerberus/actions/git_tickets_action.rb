@@ -73,21 +73,21 @@ module Fastlane
             key: :from,
             env_name: 'FL_GIT_TICKETS_FROM',
             description:  'start commit',
-            optional: false,
+            optional: true,
             default_value: 'HEAD'
           ),
           FastlaneCore::ConfigItem.new(
             key: :to,
             env_name: 'FL_GIT_TICKETS_TO',
             description:  'end commit',
-            optional: false,
+            optional: true,
             default_value: ENV['GIT_PREVIOUS_SUCCESSFUL_COMMIT'] || 'HEAD'
           ),
           FastlaneCore::ConfigItem.new(
             key: :regex,
             env_name: 'FL_GIT_TICKETS_REGEX',
             description:  'regex to extract ticket numbers',
-            optional: false,
+            optional: true,
             default_value: '([A-Z]+-\d+)'
           ),
           FastlaneCore::ConfigItem.new(
@@ -100,7 +100,7 @@ module Fastlane
             key: :pretty,
             env_name: 'FL_GIT_TICKETS_PRETTY_FORMAT',
             description:  'git pretty format',
-            optional: false,
+            optional: true,
             default_value: '* (%h) %s'
           )
         ]
