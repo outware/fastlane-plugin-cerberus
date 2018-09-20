@@ -5,7 +5,7 @@ The plugin is composed of multiple actions but is primarily designed to provide 
 1. Generation of release notes from git commit messages, leveraging information available from JIRA in combination with structured commit messages
 1. Notification of code changes related by publication of comments in relevent JIRA stories and bugs
 
-This example project endevours to present how a developer might integrate the plugin actions into there fastlane script to reduce the need for the above to be done manually.
+This document endevours to present how a developer might integrate the plugin actions into thier own fastlane script to reduce the need for the above to be done manually.
 
 ## Making the plugin available to fastlane
 
