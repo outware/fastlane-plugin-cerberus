@@ -14,7 +14,7 @@ module Fastlane
         end
 
         tickets = tickets(log: changelog, regex: regex)
-        exclude_regex = Regexp.new(params[:exclude_regex]) unless params[:exclude_regex].to_s.empty?
+        exclude_regex = Regexp.new(params[:excluding]) unless params[:excluding].to_s.empty?
         tickets = filter_tickets(tickets: tickets, exclude_regex: exclude_regex) if exclude_regex
         UI.important("Jira Issues: #{tickets.join(', ')}")
         return tickets
@@ -91,8 +91,8 @@ module Fastlane
             default_value: '([A-Z]+-\d+)'
           ),
           FastlaneCore::ConfigItem.new(
-            key: :exclude_regex,
-            env_name: 'FL_FIND_JIRA_TICKETS_EXCLUDE_REGEX',
+            key: :excluding,
+            env_name: 'FL_FIND_JIRA_TICKETS_EXCLUDING',
             description:  'regex to exclude from the change log',
             optional: true
           ),

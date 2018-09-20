@@ -24,13 +24,13 @@ This action will extract tickets using a provided regular expression. The defaul
 
 #### Parameters
 
-| Parameter         | Environment Name                      | Default Value                                         | Description                                                                   |
-|---------------    |------------------------------------   |---------------------------------------------------    |------------------------------------------------------------------------------ |
-| from              | FL_FIND_JIRA_TICKETS_FROM             | `'HEAD'`                                              | The commit SHA of the first commit to parse for ticket information.           |
-| to                | FL_FIND_JIRA_TICKETS_TO               | `ENV[GIT_PREVIOUS_SUCCESSFUL_COMMIT]` or `'HEAD'`     | The commit SHA of the last commit to parse for ticket information.            |
-| regex             | FL_FIND_JIRA_TICKETS_REGEX            | `'([A-Z]+-\d+)'`                                      | Regex which will be used to extract the tickets from the commit messages.     |
-| exclude_regex     | FL_FIND_JIRA_TICKETS_EXCLUDE_REGEX    |                                                       | Additional regex to ignore specific commits or keywords.                      |
-| pretty            | FL_FIND_JIRA_TICKETS_PRETTY_FORMAT    | `'* (%h) %s'`                                         | [A git log pretty format.](https://git-scm.com/docs/git-log#_pretty_formats)  |
+| Parameter     | Environment Name                      | Default Value                                         | Description                                                                   |
+|-----------    |------------------------------------   |---------------------------------------------------    |------------------------------------------------------------------------------ |
+| from          | FL_FIND_JIRA_TICKETS_FROM             | `'HEAD'`                                              | The commit SHA of the first commit to parse for ticket information.           |
+| to            | FL_FIND_JIRA_TICKETS_TO               | `ENV[GIT_PREVIOUS_SUCCESSFUL_COMMIT]` or `'HEAD'`     | The commit SHA of the last commit to parse for ticket information.            |
+| regex         | FL_FIND_JIRA_TICKETS_REGEX            | `'([A-Z]+-\d+)'`                                      | Regex which will be used to extract the tickets from the commit messages.     |
+| excluding     | FL_FIND_JIRA_TICKETS_EXCLUDING        |                                                       | Additional regex to ignore specific commits or keywords.                      |
+| pretty        | FL_FIND_JIRA_TICKETS_PRETTY_FORMAT    | `'* (%h) %s'`                                         | [A git log pretty format.](https://git-scm.com/docs/git-log#_pretty_formats)  |
 
 #### Usage
 

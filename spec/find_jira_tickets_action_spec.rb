@@ -26,7 +26,7 @@ describe Fastlane::Actions::FindJiraTicketsAction do
       expect(result).to eq(['XYZ-312', 'ZXY-5233', 'CAB-51'])
     end
 
-    describe 'exclude_regex' do
+    describe 'excluding' do
       it 'applies the exclude regex when its provided' do
         allow(Fastlane::Actions::ChangelogFromGitCommitsAction)
           .to receive(:run)
@@ -39,7 +39,7 @@ describe Fastlane::Actions::FindJiraTicketsAction do
             ].join("\n")
           )
 
-        result = execute_lane(body: "find_jira_tickets(exclude_regex: '([A-Z]+-\\d+)')")
+        result = execute_lane(body: "find_jira_tickets(excluding: '([A-Z]+-\\d+)')")
 
         expect(result).to eq([])
       end
