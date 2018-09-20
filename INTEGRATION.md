@@ -21,11 +21,11 @@ Generation of release notes using default parameters and comment format is done 
 
 ```ruby
 release_notes(
-	issues: find_jira_tickets,
-	build_url: jenkins_url,
-    username: jira_username,
-    password: jira_password,
-    host: jira_host
+  issues: find_jira_tickets,
+  build_url: jenkins_url,
+  username: jira_username,
+  password: jira_password,
+  host: jira_host
 )
 ```
 
@@ -37,11 +37,11 @@ If your build is uploaded to another platform without an action that uses `Share
 
 ```ruby
 changelog = release_notes(
-	issues: find_jira_tickets,
-	build_url: jenkins_url,
-    username: jira_username,
-    password: jira_password,
-    host: jira_host
+  issues: find_jira_tickets,
+  build_url: jenkins_url,
+  username: jira_username,
+  password: jira_password,
+  host: jira_host
 )
 ```
 
@@ -56,17 +56,17 @@ jira_tickets = find_jira_tickets(
 )
 
 release_notes(
-	issues: jira_tickets,
-	build_url: jenkins_url,
-    username: jira_username,
-    password: jira_password,
-    host: jira_host
+  issues: jira_tickets,
+  build_url: jenkins_url,
+  username: jira_username,
+  password: jira_password,
+  host: jira_host
 )
 ```
 
 If you would like to gather jira tickets for a specific project only you might like to customise the `matching` and `excluding` regular expression.
 
-The following will include jira tickets that have "CER" in the issue key and exclude any commits with "[WIP]" in the message.
+The following will include jira tickets that have `CER` in the issue key and exclude any commits with `[WIP]` in the message.
 
 ```ruby
 jira_tickets = find_jira_tickets(
@@ -75,21 +75,21 @@ jira_tickets = find_jira_tickets(
 )
 
 release_notes(
-	issues: jira_tickets,
-	build_url: jenkins_url,
-    username: jira_username,
-    password: jira_password,
-    host: jira_host
+  issues: jira_tickets,
+  build_url: jenkins_url,
+  username: jira_username,
+  password: jira_password,
+  host: jira_host
 )
 ```
 
-If there are additional changes that need to be included in the change log that do not have an associated JIRA ticket they can found using the `find_commits` action included in the release notes with the `include_commits:` parameter.
+If there are additional changes that need to be included in the change log that do not have an associated JIRA ticket they can found using the `find_commits` action and included in the release notes with the `include_commits` parameter.
 
 ```ruby
   additional_commits = find_commits(
     from: 'HEAD',
     to: 'c6150a1dbf20e0e8c10d05d9c21a1ce1ee368535',
-    regex: '\[TECH\]'
+    matching: '\[TECH\]'
   )
 
  release_notes(
