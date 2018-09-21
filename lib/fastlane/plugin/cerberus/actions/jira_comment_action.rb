@@ -59,7 +59,7 @@ module Fastlane
             key: :issues,
             env_name: 'FL_JIRA_COMMENT_ISSUES',
             description:  'jira issue keys',
-            optional: false,
+            optional: true,
             default_value: [],
             type: Array
           ),
@@ -67,14 +67,14 @@ module Fastlane
             key: :build_number,
             env_name: 'FL_JIRA_COMMENT_BUILD_NUMBER',
             description:  'CI build number',
-            optional: false,
+            optional: true,
             default_value: ENV['BUILD_NUMBER']
           ),
           FastlaneCore::ConfigItem.new(
             key: :build_url,
             env_name: 'FL_JIRA_COMMENT_BUILD_URL',
             description:  'CI build URL',
-            optional: false,
+            optional: true,
             default_value: ENV['BUILD_URL']
           ),
           FastlaneCore::ConfigItem.new(
@@ -87,7 +87,7 @@ module Fastlane
             key: :hockey_url,
             env_name: 'FL_JIRA_COMMENT_HOCKEY_URL',
             description:  'Hockey build url',
-            optional: false,
+            optional: true,
             default_value: Actions.lane_context[SharedValues::HOCKEY_DOWNLOAD_LINK]
           ),
           FastlaneCore::ConfigItem.new(
@@ -112,14 +112,14 @@ module Fastlane
             key: :context_path,
             env_name: 'FL_JIRA_CONTEXT_PATH',
             description:  'Jira context path',
-            optional: false,
+            optional: true,
             default_value: ''
           ),
           FastlaneCore::ConfigItem.new(
             key: :disable_ssl_verification,
             env_name: 'FL_JIRA_DISABLE_SSL_VERIFICATION',
             description:  'Jira SSL Verification mode',
-            optional: false,
+            optional: true,
             default_value: false,
             type: Boolean
           )
