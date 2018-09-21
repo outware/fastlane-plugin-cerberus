@@ -1,7 +1,7 @@
-describe Fastlane::Actions::IncludeCommitsAction do
+describe Fastlane::Actions::FindCommitsAction do
   describe '#run' do
     it 'doesnt find additional commits when changelog is empty' do
-      result = execute_lane(body: 'include_commits')
+      result = execute_lane(body: 'find_commits')
 
       expect(result).to eq([])
     end
@@ -20,7 +20,7 @@ describe Fastlane::Actions::IncludeCommitsAction do
           ].join("\n")
         )
 
-      result = execute_lane(body: 'include_commits(regex: \'\[([a-zA-Z]+)\]\')')
+      result = execute_lane(body: 'find_commits(matching: \'\[([a-zA-Z]+)\]\')')
 
       expect(result).to eq(['[TECH] - XYZ', '[tech] - ZYX'])
     end

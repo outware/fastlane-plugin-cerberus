@@ -1,7 +1,7 @@
-describe Fastlane::Actions::GitTicketsAction do
+describe Fastlane::Actions::FindTicketsAction do
   describe '#run' do
     it 'doesnt find issues when changelog is empty' do
-      result = execute_lane(body: 'git_tickets')
+      result = execute_lane(body: 'find_tickets')
 
       expect(result).to eq([])
     end
@@ -21,12 +21,12 @@ describe Fastlane::Actions::GitTicketsAction do
           ].join("\n")
         )
 
-      result = execute_lane(body: 'git_tickets')
+      result = execute_lane(body: 'find_tickets')
 
       expect(result).to eq(['XYZ-312', 'ZXY-5233', 'CAB-51'])
     end
 
-    describe 'exclude_regex' do
+    describe 'excluding' do
       it 'applies the exclude regex when its provided' do
         allow(Fastlane::Actions::ChangelogFromGitCommitsAction)
           .to receive(:run)
@@ -39,7 +39,7 @@ describe Fastlane::Actions::GitTicketsAction do
             ].join("\n")
           )
 
-        result = execute_lane(body: "git_tickets(exclude_regex: '([A-Z]+-\\d+)')")
+        result = execute_lane(body: "find_tickets(excluding: '([A-Z]+-\\d+)')")
 
         expect(result).to eq([])
       end

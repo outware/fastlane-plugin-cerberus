@@ -1,22 +1,17 @@
-require 'fastlane/action'
-require_relative '../helper/cerberus_helper'
-
 module Fastlane
   module Actions
-    class GitTicketsAction < Action
+    class FindCommitsAction < Action
       def self.run(params)
-        regex = Regexp.new(params[:regex])
+        regex = Regexp.new(params[:matching])
         changelog = log(from: params[:from], to: params[:to], pretty: params[:pretty])
 
         if changelog.to_s.empty?
-          UI.important('Git Tickets: No changes found.')
+          UI.important('No issues found.')
           return []
         end
 
         tickets = tickets(log: changelog, regex: regex)
-        exclude_regex = Regexp.new(params[:exclude_regex]) unless params[:exclude_regex].to_s.empty?
-        tickets = filter_tickets(tickets: tickets, exclude_regex: exclude_regex) if exclude_regex
-        UI.important("Jira Issues: #{tickets.join(', ')}")
+        UI.important("Additional Issues: #{tickets.join("\n")}")
         return tickets
       end
 
@@ -39,16 +34,13 @@ module Fastlane
 
       def self.tickets(log:, regex:)
         return [] if log.to_s.empty?
+
         log.each_line
-           .map { |line| line.strip.scan(regex) }
+           .map(&:strip)
+           .grep(regex)
            .flatten
            .reject(&:empty?)
            .uniq
-      end
-
-      def self.filter_tickets(tickets:, exclude_regex:)
-        return [] if tickets.to_s.empty?
-        tickets.each.grep_v(exclude_regex)
       end
 
       #####################################################
@@ -56,7 +48,7 @@ module Fastlane
       #####################################################
 
       def self.details
-        'Extracts the Jira issue keys between commits'
+        'Extracts additional issues from the log'
       end
 
       def self.is_supported?(platform)
@@ -71,43 +63,37 @@ module Fastlane
         [
           FastlaneCore::ConfigItem.new(
             key: :from,
-            env_name: 'FL_GIT_TICKETS_FROM',
+            env_name: 'FL_FIND_COMMITS_FROM',
             description:  'start commit',
             optional: true,
-            default_value: 'HEAD'
+            default_value: ENV['FL_FIND_TICKETS_FROM'] || 'HEAD'
           ),
           FastlaneCore::ConfigItem.new(
             key: :to,
-            env_name: 'FL_GIT_TICKETS_TO',
+            env_name: 'FL_FIND_COMMITS_TO',
             description:  'end commit',
             optional: true,
-            default_value: ENV['GIT_PREVIOUS_SUCCESSFUL_COMMIT'] || 'HEAD'
+            default_value: ENV['FL_FIND_TICKETS_TO'] || ENV['GIT_PREVIOUS_SUCCESSFUL_COMMIT'] || 'HEAD'
           ),
           FastlaneCore::ConfigItem.new(
-            key: :regex,
-            env_name: 'FL_GIT_TICKETS_REGEX',
-            description:  'regex to extract ticket numbers',
+            key: :matching,
+            env_name: 'FL_FIND_COMMITS_MATCHING',
+            description:  'regex to only include to the change log',
             optional: true,
-            default_value: '([A-Z]+-\d+)'
-          ),
-          FastlaneCore::ConfigItem.new(
-            key: :exclude_regex,
-            env_name: 'FL_GIT_TICKETS_EXCLUDE_REGEX',
-            description:  'regex to exclude from the change log',
-            optional: true
+            default_value: ENV['FL_FIND_TICKETS_MATCHING'] || '([A-Z]+-\d+)'
           ),
           FastlaneCore::ConfigItem.new(
             key: :pretty,
-            env_name: 'FL_GIT_TICKETS_PRETTY_FORMAT',
+            env_name: 'FL_FIND_COMMITS_PRETTY_FORMAT',
             description:  'git pretty format',
             optional: true,
-            default_value: '* (%h) %s'
+            default_value: ENV['FL_FIND_TICKETS_PRETTY_FORMAT'] || '%s'
           )
         ]
       end
 
       def self.author
-        'Harry Singh <hhs4harry@gmail.com>'
+        'Syd Srirak <sydney.srirak@outware.com.au>'
       end
     end
   end
