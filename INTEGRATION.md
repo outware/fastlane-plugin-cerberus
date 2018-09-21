@@ -4,7 +4,7 @@
 * [Generating release notes](#generating-release-notes)
   + [Customising commits](#customising-commits)
   + [Including additional commits](#including-additional-commits)
-  + [Sample Changelog](#sample_changelog)
+  + [Sample Changelog](#sample-changelog)
 * [Notification of code changes](#notification-of-code-changes)
 
 The plugin is composed of multiple actions but is primarily designed to provide and leverage information in disparate systems such as Jenkins, JIRA, Hockey and git.
