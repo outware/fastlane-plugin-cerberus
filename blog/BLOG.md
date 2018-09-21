@@ -15,7 +15,7 @@ Wish your ticket automatically received a comment about build and deploy events,
 
 <img src="assets/jira_comment.png" alt="Jira Comment" width="320"/>
 
-read on, you may find this tool useful.
+Read on, you may find this tool useful.
 
 
 ## Motivation
@@ -26,8 +26,8 @@ The tools operated in silos and exchanged very little information with each othe
 
 We took a look at our toolchain and identified areas where information was being lost in transit.
 
-A commit contained the story card it correlates to, but our CI server did not receive that information from source control repo.
-CI at this point in time has no idea what it is building and hence could pass any information on to the HockeyApp changelog.
+A commit contained the story card it correlates to, but our CI server did not receive that information from source control.
+CI at this point in time has no idea what it is building and hence could not pass any information on to the HockeyApp changelog.
 
 ![No Traceability](assets/no_traceability.png)
 
@@ -43,7 +43,7 @@ Cerberus is a collection of the following tasks that work together to achieve a 
 1. Ticket numbers are harvested from commit messages
 1. The Jira API then provides additional information about the tickets
 1. The information is collated into a changelog and passed along to tools such as HockeyApp and Testflight
-1. Jira tickets receive a comment with the link to the deployed artifact (s)
+1. Jira tickets receive a comment with the link to the deployed artifact(s)
 
 ![Cerberus Flow](assets/cerberus_flow.png)
 
@@ -57,7 +57,7 @@ Cerberus is compatible with any project that uses [fastlane] or [gradle] and [Ji
 
 ## Conclusion
 
-Cerberus helped us by 'wiring up' tools that wouldn't normally speak to each other. Jira now serves as a source of truth and as a dashboard of information. Our team members don't have to chase up on our tools or chase up each other,  giving them time to think about and solve harder problems.
+Cerberus helped us by 'wiring up' tools that wouldn't normally speak to each other. Jira now serves as a source of truth and as a dashboard of information. Our team members don't have to chase up on our tools or chase up each other, giving them time to think about and solve harder problems.
 
 ---
 
