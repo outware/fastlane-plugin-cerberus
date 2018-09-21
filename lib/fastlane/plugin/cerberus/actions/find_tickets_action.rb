@@ -3,9 +3,9 @@ require_relative '../helper/cerberus_helper'
 
 module Fastlane
   module Actions
-    class GitTicketsAction < Action
+    class FindTicketsAction < Action
       def self.run(params)
-        regex = Regexp.new(params[:regex])
+        regex = Regexp.new(params[:matching])
         changelog = log(from: params[:from], to: params[:to], pretty: params[:pretty])
 
         if changelog.to_s.empty?
@@ -14,7 +14,7 @@ module Fastlane
         end
 
         tickets = tickets(log: changelog, regex: regex)
-        exclude_regex = Regexp.new(params[:exclude_regex]) unless params[:exclude_regex].to_s.empty?
+        exclude_regex = Regexp.new(params[:excluding]) unless params[:excluding].to_s.empty?
         tickets = filter_tickets(tickets: tickets, exclude_regex: exclude_regex) if exclude_regex
         UI.important("Jira Issues: #{tickets.join(', ')}")
         return tickets
@@ -71,34 +71,34 @@ module Fastlane
         [
           FastlaneCore::ConfigItem.new(
             key: :from,
-            env_name: 'FL_GIT_TICKETS_FROM',
+            env_name: 'FL_FIND_TICKETS_FROM',
             description:  'start commit',
             optional: false,
             default_value: 'HEAD'
           ),
           FastlaneCore::ConfigItem.new(
             key: :to,
-            env_name: 'FL_GIT_TICKETS_TO',
+            env_name: 'FL_FIND_TICKETS_TO',
             description:  'end commit',
             optional: false,
             default_value: ENV['GIT_PREVIOUS_SUCCESSFUL_COMMIT'] || 'HEAD'
           ),
           FastlaneCore::ConfigItem.new(
-            key: :regex,
-            env_name: 'FL_GIT_TICKETS_REGEX',
+            key: :matching,
+            env_name: 'FL_FIND_TICKETS_MATCHING',
             description:  'regex to extract ticket numbers',
             optional: false,
             default_value: '([A-Z]+-\d+)'
           ),
           FastlaneCore::ConfigItem.new(
-            key: :exclude_regex,
-            env_name: 'FL_GIT_TICKETS_EXCLUDE_REGEX',
+            key: :excluding,
+            env_name: 'FL_FIND_TICKETS_EXCLUDING',
             description:  'regex to exclude from the change log',
             optional: true
           ),
           FastlaneCore::ConfigItem.new(
             key: :pretty,
-            env_name: 'FL_GIT_TICKETS_PRETTY_FORMAT',
+            env_name: 'FL_FIND_TICKETS_PRETTY_FORMAT',
             description:  'git pretty format',
             optional: false,
             default_value: '* (%h) %s'
