@@ -20,9 +20,9 @@ Read on, you may find this tool useful.
 
 ## Motivation
 
-We use [Bitbucket], [Jenkins], [Jira], [HockeyApp], and [TestFlight]. Using these disparate tools came at a cost.
+We use [Bitbucket], [Jenkins], [Jira], [HockeyApp], and [TestFlight] as part of our development pipeline.
 
-The tools operated in silos and exchanged very little information with each other. This made handover of a story from developer to QA to product owner that much harder. Precious project time was being spent on chasing other people and waiting for builds to complete.
+Using these disparate tools came at a cost. They operated in silos and exchanged very little information with each other. This made handover of a story from developer to QA to product owner that much harder. Precious project time was being spent on chasing other people and waiting for builds to complete.
 
 We took a look at our toolchain and identified areas where information was being lost in transit.
 
@@ -54,12 +54,12 @@ Cerberus is compatible with any project that uses [Fastlane] or [Gradle] and [Ji
 
 **Fastlane**
 
-- [Project page](https://github.com/outware/fastlane-plugin-cerberus)
+- [Project Page](https://github.com/outware/fastlane-plugin-cerberus)
 - [Integration Instructions](https://github.com/outware/fastlane-plugin-cerberus/blob/develop/INTEGRATION.md)
 
 **Gradle**
 
-- [Project page](https://github.com/outware/gradle-plugin-cerberus)
+- [Project Page](https://github.com/outware/gradle-plugin-cerberus)
 - [Integration Instructions](https://github.com/outware/gradle-plugin-cerberus)
 
 ## Conclusion
