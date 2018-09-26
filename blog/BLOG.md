@@ -13,16 +13,16 @@ Wish your changelog was automatically generated for you, like so?
 
 Wish your ticket automatically received a comment about build and deploy events, like so?
 
-<img src="assets/jira_comment.png" alt="Jira Comment" width="320"/>
+<img src="assets/jira_comment.png" alt="Jira Comment" width="322"/>
 
 Read on, you may find this tool useful.
 
 
 ## Motivation
 
-We use [Bitbucket], [Jenkins], [Jira], [HockeyApp], and [TestFlight]. Using these disparate tools came at a cost.
+We use [Bitbucket], [Jenkins], [Jira], [HockeyApp], and [TestFlight] as part of our development pipeline.
 
-The tools operated in silos and exchanged very little information with each other. This made handover of a story from developer to QA to product owner that much harder. Precious project time was being spent on chasing other people and waiting for builds to complete.
+Using these disparate tools came at a cost. They operated in silos and exchanged very little information with each other. This made handover of a story from developer to QA to product owner that much harder. Precious project time was being spent on chasing other people and waiting for builds to complete.
 
 We took a look at our toolchain and identified areas where information was being lost in transit.
 
@@ -50,10 +50,17 @@ Cerberus is a collection of the following tasks that work together to achieve a 
 
 ## Where to go from here?
 
-Cerberus is compatible with any project that uses [fastlane] or [gradle] and [Jira] as the project tracker. If you would like to give it a spin:
+Cerberus is compatible with any project that uses [Fastlane] or [Gradle] and [Jira] as the project tracker. Here are some links if you would like to give it a spin:
 
-! Add pending links and instructions here!
+**Fastlane**
 
+- [Project Page](https://github.com/outware/fastlane-plugin-cerberus)
+- [Integration Instructions](https://github.com/outware/fastlane-plugin-cerberus/blob/develop/INTEGRATION.md)
+
+**Gradle**
+
+- [Project Page](https://github.com/outware/gradle-plugin-cerberus)
+- [Integration Instructions](https://github.com/outware/gradle-plugin-cerberus)
 
 ## Conclusion
 
@@ -61,13 +68,13 @@ Cerberus helped us by 'wiring up' tools that wouldn't normally speak to each oth
 
 ---
 
-Do you see an issue with our plugins or want to add a new feature? Feel free to submit a PR to Github <!link pending>
+Do you see an issue with our plugins or want to add a new feature? Feel free to submit a PR on Github!
 
 <!-- Links -->
 [fastlane]: https://fastlane.tools/
-[Gradle]: https://gradle.org/
-[Jira]: https://www.atlassian.com/software/jira
-[Bitbucket]: https://bitbucket.org
-[Jenkins]: https://jenkins.io/
-[HockeyApp]: https://hockeyapp.net
-[TestFlight]: https://developer.apple.com/testflight/
+[gradle]: https://gradle.org/
+[jira]: https://www.atlassian.com/software/jira
+[bitbucket]: https://bitbucket.org
+[jenkins]: https://jenkins.io/
+[hockeyapp]: https://hockeyapp.net
+[testflight]: https://developer.apple.com/testflight/
