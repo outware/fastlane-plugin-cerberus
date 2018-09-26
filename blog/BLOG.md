@@ -68,7 +68,7 @@ Cerberus helped us by 'wiring up' tools that wouldn't normally speak to each oth
 
 ---
 
-Do you see an issue with our plugins or want to add a new feature? Feel free to submit a PR to Github
+Do you see an issue with our plugins or want to add a new feature? Feel free to submit a PR on Github!
 
 <!-- Links -->
 [fastlane]: https://fastlane.tools/
