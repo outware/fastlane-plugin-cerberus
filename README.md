@@ -2,6 +2,20 @@
 
 [![fastlane Plugin Badge](https://rawcdn.githack.com/fastlane/fastlane/master/fastlane/assets/plugin-badge.svg)](https://rubygems.org/gems/fastlane-plugin-cerberus) [![CircleCI](https://circleci.com/gh/outware/fastlane-plugin-cerberus.svg?style=svg)](https://circleci.com/gh/outware/fastlane-plugin-cerberus)
 
+* [Getting Started](#getting-started)
+* [About](#about)
+* [Integration Guide](#integration-guide)
+* [Actions](#actions)
+  + [find_tickets](#find_tickets)
+  + [find_commits](#find_commits)
+  + [jira_comment](#jira_comment)
+  + [release_notes](#release_notes)
+* [Example](#example)
+* [Run tests for this plugin](#run-tests-for-this-plugin)
+* [Issues and Feedback](#issues-and-feedback)
+* [Troubleshooting](#troubleshooting)
+* [Using _fastlane_ Plugins](#using-_fastlane_-plugins)
+* [About _fastlane_](#about-_fastlane_)
 
 ## Getting Started
 
@@ -45,6 +59,10 @@ and comment on your Jira tickets with build and artefact information
 Jenkins: [Build #451|https://jenkins.url/build/451]
 HockeyApp: [Version 2.0-RC|https://hockey.url/app/d3adcaf3]
 ```
+
+## Integration Guide
+
+Please take a look at the project [integration guide](INTEGRATION.md) to get you started.
 
 ## Actions
 
